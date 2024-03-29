@@ -3,7 +3,8 @@ import "./App.css";
 
 function App() {
   const [athletes, setAthletes] = useState([]);
-  const [loadingState, setLoadingState] = useState(false);
+  // const [activities, setActivities] = useState([]);
+  // const [loadingState, setLoadingState] = useState(false);
 
   const getAthletes = async () => {
     const response = await fetch("http://localhost:3000/");
@@ -23,8 +24,7 @@ function App() {
   return (
     <>
       <h1>StravaJS2.0</h1>
-      <p>{athletes.length >= 1 ? `${athletes[0].name}` : "Loading..."}</p>
-      {/* <p>{athletes[0].id}</p> */}
+      <p>{athletes.length >= 1 ? `${athletes[0].distance}` : "Loading..."}</p>
     </>
   );
 }

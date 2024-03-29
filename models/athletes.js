@@ -1,6 +1,7 @@
 // Import the 'pool' object so our helper functions can interact with the PostgreSQL database
 import { pool } from "../db/index.js";
 
+// get a list of all athletes
 export async function getAthletes() {
   // Query the database and return all resource twos
   const queryText = "SELECT * FROM athletes";
@@ -8,6 +9,73 @@ export async function getAthletes() {
   const result = await pool.query(queryText);
   // Use pool to send query to database.
   return result.rows;
+}
+
+// get access code for one athlete
+export async function getAthleteAccessCode(athlete) {
+  const auth_link = "https://www.strava.com/oauth/token";
+
+  let athleteAccessToken = {};
+
+  const response = await fetch(auth_link, {
+    method: "POST",
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json",
+    },
+    // parameters: {
+    //   pageSize: 200,
+    // },
+    body: JSON.stringify({
+      client_id: athlete["client_id"],
+      client_secret: athlete["client_secret"],
+      refresh_token: athlete["refresh_token"],
+      grant_type: "refresh_token",
+    }),
+  });
+
+  const data = await response.json();
+
+  athleteAccessToken = {
+    id: athlete.id,
+    athlete: athlete.name,
+    accessToken: data.access_token,
+  };
+  return athleteAccessToken;
+}
+
+// get all activities for one athlete
+export async function getAthleteActivities(athlete) {
+  const activities_url = "https://www.strava.com/api/v3/athlete/activities";
+  const activitiesLink = `${activities_url}?per_page=100&access_token=${athlete.accessToken}`; // total results is handled here - could be ${}
+  const response = await fetch(activitiesLink);
+  const athleteData = await response.json();
+  return athleteData;
+}
+
+// filter results by type - "Run" "Walk"
+export async function filterActivitiesByType(type, activities) {
+  const filteredActivities = [];
+
+  activities.map((activity) => {
+    if (activity.type === type) {
+      filteredActivities.push(activity);
+    }
+  });
+  return filteredActivities;
+}
+
+// Filter activities by current year
+export async function filterByYear(year, activities) {
+  const filteredActivities = [];
+  activities.map((activity) => {
+    const activityDateStr = activity.start_date;
+    const activityYear = Number(activityDateStr.slice(0, 4));
+    if (activityYear === year) {
+      filteredActivities.push(activity);
+    }
+  });
+  return filteredActivities;
 }
 
 // export async function getModelsById(id) {
