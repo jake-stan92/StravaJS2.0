@@ -78,6 +78,8 @@ export async function filterByYear(year, activities) {
   return filteredActivities;
 }
 
+// carry on filtering here, filter down to week, can add different routes in front end in future
+
 // export async function getModelsById(id) {
 //   // Query the database and return the resource with a matching id or null
 //   // Set SQL query
