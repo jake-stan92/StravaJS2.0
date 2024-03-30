@@ -25,38 +25,146 @@ function App() {
   console.log(athletes);
 
   // graph testing // function calls itself in this format
-  (async function () {
-    const data = [
-      { month: "Jan", count: 10 },
-      { month: "Feb", count: 14 },
-      { month: "Mar", count: 5 },
-      { month: "Apr", count: 15 },
-      { month: "May", count: 2 },
-      { month: "Jun", count: 19 },
-      { month: "Jul", count: 12 },
-      { month: "Aug", count: 6 },
-      { month: "Sep", count: 20 },
-      { month: "Oct", count: 17 },
-      { month: "Nov", count: 8 },
-      { month: "Dec", count: 1 },
-    ];
 
+  const yearlyData = [
+    { month: "Jan", count: 10 },
+    { month: "Feb", count: 14 },
+    { month: "Mar", count: 5 },
+    { month: "Apr", count: 15 },
+    { month: "May", count: 2 },
+    { month: "Jun", count: 19 },
+    { month: "Jul", count: 12 },
+    { month: "Aug", count: 6 },
+    { month: "Sep", count: 20 },
+    { month: "Oct", count: 17 },
+    { month: "Nov", count: 8 },
+    { month: "Dec", count: 1 },
+  ];
+
+  const monthlyData = [
+    { day: 1, count: 1 },
+    { day: 2, count: 1 },
+    { day: 3, count: 0 },
+    { day: 4, count: 0 },
+    { day: 5, count: 1 },
+    { day: 6, count: 0 },
+    { day: 7, count: 1 },
+    { day: 8, count: 0 },
+    { day: 9, count: 0 },
+    { day: 10, count: 1 },
+    { day: 11, count: 1 },
+    { day: 12, count: 1 },
+    { day: 13, count: 1 },
+    { day: 14, count: 0 },
+    { day: 15, count: 0 },
+  ];
+
+  const weeklyData = [
+    { day: "Mon", count: 1 },
+    { day: "Tue", count: 0 },
+    { day: "Wed", count: 1 },
+    { day: "Thu", count: 0 },
+    { day: "Fri", count: 0 },
+    { day: "Sat", count: 1 },
+    { day: "Sun", count: 1 },
+  ];
+
+  useEffect(() => {
     let chartLocation = document.getElementById("graph1");
-    if (chartLocation) {
-      new Chart(chartLocation, {
-        type: "bar",
-        data: {
-          labels: data.map((row) => row.month),
-          datasets: [
-            {
-              label: "Year To Date",
-              data: data.map((row) => row.count),
-            },
-          ],
-        },
-      });
-    }
-  })();
+    const myChart = new Chart(chartLocation, {
+      type: "bar",
+      data: {
+        labels: yearlyData.map((row) => row.month),
+        datasets: [
+          {
+            label: "Year To Date",
+            data: yearlyData.map((row) => row.count),
+          },
+        ],
+      },
+    });
+
+    // when component unmounts
+    return () => {
+      myChart.destroy();
+    };
+  }, []);
+
+  useEffect(() => {
+    let chartLocation = document.getElementById("graph2");
+    const myChart = new Chart(chartLocation, {
+      type: "bar",
+      data: {
+        labels: monthlyData.map((row) => row.day),
+        datasets: [
+          {
+            label: "Month To Date",
+            data: monthlyData.map((row) => row.count),
+          },
+        ],
+      },
+    });
+
+    // when component unmounts
+    return () => {
+      myChart.destroy();
+    };
+  }, []);
+
+  useEffect(() => {
+    let chartLocation = document.getElementById("graph3");
+    const myChart = new Chart(chartLocation, {
+      type: "bar",
+      data: {
+        labels: weeklyData.map((row) => row.day),
+        datasets: [
+          {
+            label: "Week To Date",
+            data: weeklyData.map((row) => row.count),
+          },
+        ],
+      },
+    });
+
+    // when component unmounts
+    return () => {
+      myChart.destroy();
+    };
+  }, []);
+
+  // (async function () {
+  //   const data = [
+  //     { month: "Jan", count: 10 },
+  //     { month: "Feb", count: 14 },
+  //     { month: "Mar", count: 5 },
+  //     { month: "Apr", count: 15 },
+  //     { month: "May", count: 2 },
+  //     { month: "Jun", count: 19 },
+  //     { month: "Jul", count: 12 },
+  //     { month: "Aug", count: 6 },
+  //     { month: "Sep", count: 20 },
+  //     { month: "Oct", count: 17 },
+  //     { month: "Nov", count: 8 },
+  //     { month: "Dec", count: 1 },
+  //   ];
+
+  //   let chartLocation = document.getElementById("graph1");
+  //   if (chartLocation) {
+  //     new Chart(chartLocation, {
+  //       type: "bar",
+  //       data: {
+  //         labels: data.map((row) => row.month),
+  //         datasets: [
+  //           {
+  //             label: "Year To Date",
+  //             data: data.map((row) => row.count),
+  //           },
+  //         ],
+  //       },
+  //     });
+  //   }
+  //   chartLocation.destroy();
+  // })();
 
   return (
     <>
