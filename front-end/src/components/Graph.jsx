@@ -4,30 +4,23 @@ import "./Graph.css";
 import Chart from "chart.js/auto";
 
 const Graph = (props) => {
-  let identifier = "";
-  let chartLabel = "";
-  if (props.graphNum === 1) {
-    identifier = "month";
-    chartLabel = "Year To Date";
-  }
-  if (props.graphNum === 2) {
-    identifier = "week";
-    chartLabel = "Month To Date";
-  }
-  if (props.graphNum === 3) {
-    identifier = "day";
-    chartLabel = "Week To Date";
-  }
   useEffect(() => {
     let chartLocation = document.getElementById(`graph${props.graphNum}`);
     const myChart = new Chart(chartLocation, {
       type: "bar",
       data: {
-        labels: props.data.map((row) => row[identifier]),
+        labels: props.data.map((row) => row[props.time]),
         datasets: [
           {
-            label: chartLabel,
+            label: props.title,
+            data: props.data.map((row) => row.distance),
+            order: 1,
+          },
+          {
+            label: props.subTitle,
             data: props.data.map((row) => row.count),
+            type: "line",
+            order: 0,
           },
         ],
       },
