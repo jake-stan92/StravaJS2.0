@@ -17,11 +17,11 @@ const Last5RunsTable = (props) => {
       </h5>
       {props.data.map((run) => (
         <>
-          <p>{run.date}</p>
+          <p>{new Date(run.start_date).toLocaleDateString("en-uk")}</p>
           {/* <p>{run.location}</p> */}
-          <p>{run.distance}</p>
-          <p>{run.time}</p>
-          <p>{run.avgSpeed}</p>
+          <p>{(run.distance / 1000).toFixed(2)}</p>
+          <p>{(run.elapsed_time / 60).toFixed(2)}</p>
+          <p>{(run.average_speed * 3.6).toFixed(2)}</p>
         </>
       ))}
     </div>
