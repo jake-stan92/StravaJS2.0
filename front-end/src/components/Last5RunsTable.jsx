@@ -4,15 +4,21 @@ import "./last5RunsTable.css";
 const Last5RunsTable = (props) => {
   return (
     <div className="last5-table">
-      <h4>Date</h4>
-      <h4>Location</h4>
-      <h4>Distance</h4>
-      <h4>Time</h4>
-      <h4>Average Speed</h4>
+      <h5>Date</h5>
+      {/* <h5>Location</h5> */}
+      <h5>
+        Distance<br></br>(km)
+      </h5>
+      <h5>
+        Time<br></br>(mins)
+      </h5>
+      <h5>
+        Avg Speed<br></br>(km/h)
+      </h5>
       {props.data.map((run) => (
         <>
           <p>{run.date}</p>
-          <p>{run.location}</p>
+          {/* <p>{run.location}</p> */}
           <p>{run.distance}</p>
           <p>{run.time}</p>
           <p>{run.avgSpeed}</p>

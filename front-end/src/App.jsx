@@ -113,14 +113,10 @@ function App() {
             </canvas>
           </div>
         </div>
-        <Last5RunsTable data={last5} />
 
-        {/* <div className="bottom-stat-collection">
-          <div className="bottom-stat" id="last5">
-            bottom stat
-          </div>
-          <div className="bottom-stat">bottom stat</div>
-        </div> */}
+        <div className="bottom-stat-collection">
+          <Last5RunsTable data={last5} />
+        </div>
 
         {/* <p>{athletes.length >= 1 ? `${athletes[0].distance}` : "Loading..."}</p> */}
       </div>

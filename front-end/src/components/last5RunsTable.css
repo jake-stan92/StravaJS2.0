@@ -1,4 +1,11 @@
 .last5-table {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  place-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.last5-table p {
+  font-size: 1rem;
 }
