@@ -26,7 +26,7 @@ const Graph = (props) => {
       },
     });
 
-    // when component unmounts // prevents console error of already useed chart canvas
+    // when component unmounts // prevents console error of already used chart canvas
     return () => {
       myChart.destroy();
     };

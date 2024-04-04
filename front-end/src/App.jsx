@@ -2,28 +2,37 @@ import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import "./App.css";
 import Footer from "./components/Footer";
-import Chart from "chart.js/auto";
 import Graph from "./components/Graph";
 
+import { getLast5 } from "./components/helpers.js";
+import Last5RunsTable from "./components/Last5RunsTable.jsx";
+
 function App() {
-  const [athletes, setAthletes] = useState([]);
+  const [runs, setRuns] = useState([]);
+  const [last5, setLast5] = useState([]);
   // const [activities, setActivities] = useState([]);
   // const [loadingState, setLoadingState] = useState(false);
 
-  const getAthletes = async () => {
-    const response = await fetch("http://localhost:3000/");
-    const data = await response.json();
-    setAthletes(data.payload);
-  };
+  // const getRuns = async () => {
+  //   const response = await fetch("http://localhost:3000/");
+  //   const data = await response.json();
+  //   setRuns(data.payload);
+  // };
 
   useEffect(() => {
-    if (athletes.length === 0) {
-      getAthletes();
+    // if runs is empty, populate runs else filter data
+    if (runs.length === 0) {
+      const getRuns = async () => {
+        const response = await fetch("http://localhost:3000/");
+        const data = await response.json();
+        setRuns(data.payload);
+      };
+      getRuns();
+    } else {
+      setLast5(getLast5(runs));
     }
     return () => {};
-  }, [athletes]);
-
-  console.log(athletes);
+  }, [runs]);
 
   // graph testing // function calls itself in this format
 
@@ -104,12 +113,14 @@ function App() {
             </canvas>
           </div>
         </div>
-        <div className="bottom-stat-collection">
+        <Last5RunsTable data={last5} />
+
+        {/* <div className="bottom-stat-collection">
           <div className="bottom-stat" id="last5">
             bottom stat
           </div>
           <div className="bottom-stat">bottom stat</div>
-        </div>
+        </div> */}
 
         {/* <p>{athletes.length >= 1 ? `${athletes[0].distance}` : "Loading..."}</p> */}
       </div>

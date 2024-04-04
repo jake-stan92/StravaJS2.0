@@ -20,7 +20,7 @@ app.use(cors({ origin: "*" }));
 const todaysDate = new Date();
 const currentYear = todaysDate.getFullYear();
 
-// return all athlete data here?
+// returning this years runs
 app.get("/", async (req, res) => {
   // use func to get all athletes
   const athletes = await getAthletes();
