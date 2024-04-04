@@ -4,12 +4,15 @@ import "./App.css";
 import Footer from "./components/Footer";
 import Graph from "./components/Graph";
 
-import { getLast5 } from "./components/helpers.js";
+import { getLast5, getAvgDistance, getAvgSpeed } from "./components/helpers.js";
 import Last5RunsTable from "./components/Last5RunsTable.jsx";
 
 function App() {
   const [runs, setRuns] = useState([]);
   const [last5, setLast5] = useState([]);
+  const [last5AvgDistance, setLast5AverageDistance] = useState(0);
+  const [last5AvgSpeed, setLast5AverageSpeed] = useState(0);
+  const [avgDistanceTotal, setAvgDistanceTotal] = useState(0);
   // const [activities, setActivities] = useState([]);
   // const [loadingState, setLoadingState] = useState(false);
 
@@ -30,9 +33,18 @@ function App() {
       getRuns();
     } else {
       setLast5(getLast5(runs));
+      setAvgDistanceTotal(getAvgDistance(runs));
+      console.log(runs);
     }
     return () => {};
   }, [runs]);
+
+  useEffect(() => {
+    console.log(last5);
+    setLast5AverageDistance(getAvgDistance(last5));
+    setLast5AverageSpeed(getAvgSpeed(last5));
+    return () => {};
+  }, [last5]);
 
   // graph testing // function calls itself in this format
 
@@ -73,10 +85,18 @@ function App() {
       <Header />
       <div className="main">
         <div className="top-stat-collection">
-          <div className="top-stat">stat</div>
-          <div className="top-stat">stat</div>
-          <div className="top-stat">stat</div>
-          <div className="top-stat">stat</div>
+          <div className="top-stat" id="total-runs-stat">
+            <p>Total Runs this year{runs.length}</p>
+          </div>
+          <div className="top-stat" id="last5-avg-distance-stat">
+            <p>Last 5 avg distance {last5AvgDistance}km</p>
+          </div>
+          <div className="top-stat" id="avg-run-distance-stat">
+            <p>average run dist all {avgDistanceTotal}km</p>
+          </div>
+          <div className="top-stat" id="last5-avg-speed-statt">
+            <p>last 5 avg speed {last5AvgSpeed}km/h</p>
+          </div>
         </div>
         <div className="graph-collection">
           <div className="graph-container">

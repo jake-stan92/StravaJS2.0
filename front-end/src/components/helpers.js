@@ -11,21 +11,21 @@ export function getAverageDistance(activites) {
   return averageDistance;
 }
 
-// last 5 avg distance
-function getLast5AvgDistance(last5) {
+// avg distance
+export function getAvgDistance(activities) {
   let total = 0;
-  last5.map((activity) => {
+  activities.map((activity) => {
     total += activity.distance;
   });
   const totalKM = total / 1000;
-  const averageDistance = (totalKM / last5.length).toFixed(2);
+  const averageDistance = (totalKM / activities.length).toFixed(2);
   return averageDistance;
 }
 
-// last 5 avg speed
-export async function getLast5AvgSpeed(last5) {
+// avg speed
+export function getAvgSpeed(activities) {
   let total = 0;
-  last5.map((run) => {
+  activities.map((run) => {
     total += run.average_speed;
   });
   const average = total / 5;
@@ -42,15 +42,14 @@ export async function getLast5AvgSpeed(last5) {
 export function getLast5(activities) {
   const last5 = [];
   for (let i = 0; i < 5; i++) {
-    const activity = {
-      date: new Date(activities[i].start_date).toLocaleDateString("en-uk"), // will need formatting
-      location: activities[i].location_country,
-      distance: (activities[i].distance / 1000).toFixed(2), // returns km
-      time: (activities[i].elapsed_time / 60).toFixed(2),
-      avgSpeed: (activities[i].average_speed * 3.6).toFixed(2), // returns km/h
-    };
-    last5.push(activity);
+    // const activity = {
+    //   date: new Date(activities[i].start_date).toLocaleDateString("en-uk"), // will need formatting
+    //   location: activities[i].location_country,
+    //   distance: (activities[i].distance / 1000).toFixed(2), // returns km
+    //   time: (activities[i].elapsed_time / 60).toFixed(2),
+    //   avgSpeed: (activities[i].average_speed * 3.6).toFixed(2), // returns km/h
+    // };
+    last5.push(activities[i]);
   }
-  console.log(last5);
   return last5;
 }
