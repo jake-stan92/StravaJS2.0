@@ -1,16 +1,5 @@
 // total runs is sorted on page load
 
-// average run distance - all runs
-export function getAverageDistance(activites) {
-  let total = 0;
-  activites.map((activity) => {
-    total += activity.distance;
-  });
-  const totalKM = total / 1000;
-  const averageDistance = (totalKM / activites.length).toFixed(2);
-  return averageDistance;
-}
-
 // avg distance
 export function getAvgDistance(activities) {
   let total = 0;
@@ -34,21 +23,30 @@ export function getAvgSpeed(activities) {
 }
 
 // year to date >> monthly count and distance
+
+export function getMonthlyTotals(activities) {
+  const monthlyTotals = [
+    { month: "Jan", count: 0, distance: 0 },
+    { month: "Feb", count: 0, distance: 0 },
+    { month: "Mar", count: 0, distance: 0 },
+  ];
+  for (let i = 0; i < activities.length; i++) {
+    const activityMonth = Number(activities[i].start_date.slice(5, 7));
+    monthlyTotals[activityMonth - 1].count++;
+    monthlyTotals[activityMonth - 1].distance += // formatting distance here
+      Number((activities[i].distance / 1000).toFixed(2));
+  }
+  console.log(monthlyTotals);
+  return monthlyTotals;
+}
+
 // month to date >> weekly count and distance
 // week to date >> daily count and distance
 
-// last 5 stats / date // where // dist // time // avg speed
 // get lastest 5 runs loop activities index 0 - 4
 export function getLast5(activities) {
   const last5 = [];
   for (let i = 0; i < 5; i++) {
-    // const activity = {
-    //   date: new Date(activities[i].start_date).toLocaleDateString("en-uk"), // will need formatting
-    //   location: activities[i].location_country,
-    //   distance: (activities[i].distance / 1000).toFixed(2), // returns km
-    //   time: (activities[i].elapsed_time / 60).toFixed(2),
-    //   avgSpeed: (activities[i].average_speed * 3.6).toFixed(2), // returns km/h
-    // };
     last5.push(activities[i]);
   }
   return last5;

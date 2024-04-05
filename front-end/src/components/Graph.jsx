@@ -5,6 +5,7 @@ import Chart from "chart.js/auto";
 
 const Graph = (props) => {
   useEffect(() => {
+    console.log(props.state);
     let chartLocation = document.getElementById(`graph${props.graphNum}`);
     const myChart = new Chart(chartLocation, {
       type: "bar",
@@ -30,11 +31,11 @@ const Graph = (props) => {
     return () => {
       myChart.destroy();
     };
-  }, []);
+  }, [props.state]);
 
   return (
     <div className="graph-container">
-      <canvas id={`${props.graphNum}`}></canvas>
+      <canvas id={`graph${props.graphNum}`}></canvas>
     </div>
   );
 };
