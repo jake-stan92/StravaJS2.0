@@ -5,7 +5,6 @@ import Chart from "chart.js/auto";
 
 const Graph = (props) => {
   useEffect(() => {
-    console.log(props.state);
     let chartLocation = document.getElementById(`graph${props.graphNum}`);
     const myChart = new Chart(chartLocation, {
       type: "bar",

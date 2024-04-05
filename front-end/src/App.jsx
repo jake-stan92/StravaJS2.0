@@ -19,41 +19,23 @@ function App() {
   const [last5AvgSpeed, setLast5AverageSpeed] = useState(0);
   const [avgDistanceTotal, setAvgDistanceTotal] = useState(0);
   const [monthlyTotals, setMonthlyTotals] = useState([]);
-  // const [activities, setActivities] = useState([]);
-  // const [loadingState, setLoadingState] = useState(false);
-
-  // const getRuns = async () => {
-  //   const response = await fetch("http://localhost:3000/");
-  //   const data = await response.json();
-  //   setRuns(data.payload);
-  // };
 
   useEffect(() => {
-    // if runs is empty, populate runs else filter data
-    if (runs.length === 0) {
-      const getRuns = async () => {
-        const response = await fetch("http://localhost:3000/");
-        const data = await response.json();
-        setRuns(data.payload);
-      };
-      getRuns();
-    } else {
-      setLast5(getLast5(runs));
-      setAvgDistanceTotal(getAvgDistance(runs));
-      setMonthlyTotals(getMonthlyTotals(runs));
-      // setMonthlyTotals([{ month: "Jan", count: 10, distance: 48 }]);
-    }
+    const populateRuns = async () => {
+      const response = await fetch("http://localhost:3000/");
+      const data = await response.json();
+      const runData = data.payload;
+      const last5Data = getLast5(runData);
+      setRuns(runData);
+      setLast5(last5Data);
+      setAvgDistanceTotal(getAvgDistance(runData));
+      setMonthlyTotals(getMonthlyTotals(runData));
+      setLast5AverageDistance(getAvgDistance(last5Data));
+      setLast5AverageSpeed(getAvgSpeed(last5Data));
+    };
+    populateRuns();
     return () => {};
-  }, [runs]);
-
-  useEffect(() => {
-    console.log(last5);
-    setLast5AverageDistance(getAvgDistance(last5));
-    setLast5AverageSpeed(getAvgSpeed(last5));
-    return () => {};
-  }, [last5]);
-
-  // graph testing // function calls itself in this format
+  }, []);
 
   const monthlyData = [
     { week: 1, count: 4, distance: 20 },
@@ -129,14 +111,10 @@ function App() {
               />
             </canvas>
           </div> */}
+        <div className="bottom-stat-collection">
+          <Last5RunsTable data={last5} />
+        </div>
       </div>
-
-      <div className="bottom-stat-collection">
-        <Last5RunsTable data={last5} />
-      </div>
-
-      {/* <p>{athletes.length >= 1 ? `${athletes[0].distance}` : "Loading..."}</p> */}
-      {/* </div> */}
       <Footer />
     </>
   );
