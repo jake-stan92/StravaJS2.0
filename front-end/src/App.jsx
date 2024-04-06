@@ -9,6 +9,7 @@ import {
   getAvgDistance,
   getAvgSpeed,
   getMonthlyTotals,
+  getDailyTotal,
 } from "./components/helpers.js";
 import Last5RunsTable from "./components/Last5RunsTable.jsx";
 
@@ -19,6 +20,7 @@ function App() {
   const [last5AvgSpeed, setLast5AverageSpeed] = useState(0);
   const [avgDistanceTotal, setAvgDistanceTotal] = useState(0);
   const [monthlyTotals, setMonthlyTotals] = useState([]);
+  // state is not a variable!! try to refactor with just runs as state and pass to other comps
 
   useEffect(() => {
     const populateRuns = async () => {
@@ -27,11 +29,13 @@ function App() {
       const runData = data.payload;
       const last5Data = getLast5(runData);
       setRuns(runData);
+      console.log(runData);
       setLast5(last5Data);
       setAvgDistanceTotal(getAvgDistance(runData));
       setMonthlyTotals(getMonthlyTotals(runData));
       setLast5AverageDistance(getAvgDistance(last5Data));
       setLast5AverageSpeed(getAvgSpeed(last5Data));
+      getDailyTotal(runData);
     };
     populateRuns();
     return () => {};
