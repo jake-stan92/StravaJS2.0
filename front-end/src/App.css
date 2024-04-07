@@ -1,12 +1,23 @@
 * {
   margin: 0;
   box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+:root {
+  --stravaRed: rgb(252, 82, 0);
+  --stravaHover: rgb(204, 66, 0);
+  --stravaOffWhite: rgb(249, 248, 245);
+  --stravaPeach: rgb(254, 212, 191);
+  --stravaLightPeach: rgb(255, 225, 191);
 }
 
 #root {
   height: 100dvh;
   display: flex;
   flex-direction: column;
+  background-color: var(--stravaOffWhite);
 }
 
 .main {
@@ -21,8 +32,27 @@
 }
 
 .top-stat {
-  background-color: rgb(68, 105, 138);
+  background-color: white;
+  border-radius: 5px;
   padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-stat img {
+  width: 20px;
+  height: auto;
+  margin-left: 0.25rem;
+}
+
+.top-stat-content {
+  text-align: end;
+  color: var(--stravaHover);
+}
+
+.stat-figure {
+  font-weight: 700;
 }
 
 .graph-collection {
