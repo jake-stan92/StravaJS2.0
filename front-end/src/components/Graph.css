@@ -1,0 +1,11 @@
+.graph-collection {
+  display: grid;
+  padding: 0.5rem;
+  row-gap: 0.5rem;
+  width: 100%;
+}
+
+.graph-container {
+  padding: 0.5rem;
+  background-color: white;
+}

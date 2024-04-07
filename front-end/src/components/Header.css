@@ -1,4 +1,9 @@
 .header {
   text-align: center;
-  background-color: aliceblue;
+  background-color: white;
+  padding: 1rem;
+}
+
+h1 {
+  color: var(--stravaRed);
 }

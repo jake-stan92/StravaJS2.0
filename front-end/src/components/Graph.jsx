@@ -16,6 +16,7 @@ const Graph = (props) => {
             data: props.data.map((row) => row.distance),
             order: 1,
             yAxisID: "y",
+            backgroundColor: "#fc5200",
           },
           {
             label: props.subTitle,
@@ -24,6 +25,7 @@ const Graph = (props) => {
             order: 0,
             yAxisID: "y1",
             borderWidth: 2, // change line width here
+            backgroundColor: "#ff7400",
           },
         ],
       },
