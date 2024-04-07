@@ -15,14 +15,34 @@ const Graph = (props) => {
             label: props.title,
             data: props.data.map((row) => row.distance),
             order: 1,
+            yAxisID: "y",
           },
           {
             label: props.subTitle,
             data: props.data.map((row) => row.count),
             type: "line",
             order: 0,
+            yAxisID: "y1",
+            borderWidth: 2, // change line width here
           },
         ],
+      },
+      options: {
+        scales: {
+          y: {
+            type: "linear",
+            display: true,
+            position: "left",
+          },
+          y1: {
+            type: "linear",
+            display: true,
+            position: "right",
+            grid: {
+              drawOnChartArea: false, // only want 1 set of grid lines
+            },
+          },
+        },
       },
     });
 
