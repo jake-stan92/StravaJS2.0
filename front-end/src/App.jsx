@@ -20,6 +20,7 @@ function App() {
   const [last5AvgSpeed, setLast5AverageSpeed] = useState(0);
   const [avgDistanceTotal, setAvgDistanceTotal] = useState(0);
   const [monthlyTotals, setMonthlyTotals] = useState([]);
+  const [dailyTotals, setDailytotals] = useState([]);
   // state is not a variable!! try to refactor with just runs as state and pass to other comps
 
   useEffect(() => {
@@ -35,7 +36,7 @@ function App() {
       setMonthlyTotals(getMonthlyTotals(runData));
       setLast5AverageDistance(getAvgDistance(last5Data));
       setLast5AverageSpeed(getAvgSpeed(last5Data));
-      getDailyTotal(runData);
+      setDailytotals(getDailyTotal(runData));
     };
     populateRuns();
     return () => {};
@@ -84,6 +85,14 @@ function App() {
             title={"Monthly Total (km)"}
             subTitle={"Total Runs"}
             state={monthlyTotals}
+          />
+          <Graph
+            data={dailyTotals}
+            graphNum={2}
+            time={"day"}
+            title={"Daily Total (km)"}
+            subTitle={"Total Runs"}
+            state={dailyTotals}
           />
         </div>
 

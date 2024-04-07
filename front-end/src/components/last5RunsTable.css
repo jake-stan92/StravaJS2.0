@@ -9,10 +9,3 @@
 .last5-table p {
   font-size: 1rem;
 }
-
-.row {
-  grid-column-start: 1;
-  grid-column-end: 5;
-  display: flex;
-  gap: 3rem;
-}

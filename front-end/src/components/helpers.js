@@ -51,7 +51,7 @@ export function getMonthlyTotals(activities) {
 // month to date >> weekly count and distance
 // week to date >> daily count and distance
 export function getDailyTotal(activities) {
-  const currentDate = new Date(2024, 1, 28); // months acting weird, month 2 is march instead of feb
+  const currentDate = new Date(2024, 1, 28); // alter date here for weekly graph, default current week
   // console.log(currentDate);
   const thisWeeksDates = weeklyDates(currentDate);
   const dailyTotals = [
@@ -100,7 +100,9 @@ export function getDailyTotal(activities) {
         dayOfActivity = 7;
       }
       dailyTotals[dayOfActivity - 1].count++;
-      dailyTotals[dayOfActivity - 1].distance += activities[i].distance;
+      dailyTotals[dayOfActivity - 1].distance += (
+        activities[i].distance / 1000
+      ).toFixed(2);
     }
   }
   return dailyTotals;
