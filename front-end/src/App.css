@@ -51,10 +51,6 @@
   color: var(--stravaRed);
 }
 
-.top-stat h5 {
-  color: var(--stravaHover);
-}
-
 .stat-figure {
   font-weight: 700;
 }

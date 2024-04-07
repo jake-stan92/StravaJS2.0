@@ -8,4 +8,12 @@
 .graph-container {
   padding: 0.5rem;
   background-color: white;
+  min-height: 195px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+svg {
+  width: 100px;
 }

@@ -24,12 +24,15 @@ function App() {
   const [avgDistanceTotal, setAvgDistanceTotal] = useState(0);
   const [monthlyTotals, setMonthlyTotals] = useState([]);
   const [dailyTotals, setDailytotals] = useState([]);
+  const [loadingState, setLoadingState] = useState(false);
   // state is not a variable!! try to refactor with just runs as state and pass to other comps
 
   useEffect(() => {
     const populateRuns = async () => {
+      setLoadingState(true);
       const response = await fetch("http://localhost:3000/");
       const data = await response.json();
+      setLoadingState(false);
       const runData = data.payload;
       const last5Data = getLast5(runData);
       setRuns(runData);
@@ -44,23 +47,6 @@ function App() {
     populateRuns();
     return () => {};
   }, []);
-
-  const monthlyData = [
-    { week: 1, count: 4, distance: 20 },
-    { week: 2, count: 2, distance: 12 },
-    { week: 3, count: 6, distance: 29 },
-    { week: 4, count: 3, distance: 14 },
-  ];
-
-  const weeklyData = [
-    { day: "Mon", count: 1, distance: 5 },
-    { day: "Tue", count: 0, distance: 0 },
-    { day: "Wed", count: 1, distance: 8 },
-    { day: "Thu", count: 0, distance: 0 },
-    { day: "Fri", count: 0, distance: 0 },
-    { day: "Sat", count: 1, distance: 10 },
-    { day: "Sun", count: 1, distance: 5 },
-  ];
 
   return (
     <>
@@ -112,6 +98,7 @@ function App() {
             title={"Monthly Total (km)"}
             lineGraph={true}
             state={monthlyTotals}
+            loadingState={loadingState}
           />
           <Graph
             data={dailyTotals}
@@ -120,6 +107,7 @@ function App() {
             title={"Daily Total (km)"}
             lineGraph={false}
             state={dailyTotals}
+            loadingState={loadingState}
           />
         </div>
 
