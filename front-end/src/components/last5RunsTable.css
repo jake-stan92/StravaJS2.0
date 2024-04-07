@@ -27,10 +27,19 @@
   padding: 0.5rem;
 } */
 
-.last5-table {
+table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 0.5rem;
+  background-color: white;
+}
+
+.last5-table {
+  width: 100%;
+  background-color: white;
+  min-height: 230px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .last5-table td {

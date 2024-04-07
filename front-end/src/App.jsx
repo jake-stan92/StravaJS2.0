@@ -140,7 +140,7 @@ function App() {
             </canvas>
           </div> */}
         <div className="bottom-stat-collection">
-          <Last5RunsTable data={last5} />
+          <Last5RunsTable data={last5} loadingState={loadingState} />
         </div>
       </div>
       <Footer />
