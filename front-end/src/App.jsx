@@ -110,7 +110,7 @@ function App() {
             graphNum={1}
             time={"month"}
             title={"Monthly Total (km)"}
-            subTitle={"Total Runs"}
+            lineGraph={true}
             state={monthlyTotals}
           />
           <Graph
@@ -118,7 +118,7 @@ function App() {
             graphNum={2}
             time={"day"}
             title={"Daily Total (km)"}
-            subTitle={"Total Runs"}
+            lineGraph={false}
             state={dailyTotals}
           />
         </div>

@@ -51,7 +51,7 @@ export function getMonthlyTotals(activities) {
 // month to date >> weekly count and distance
 // week to date >> daily count and distance
 export function getDailyTotal(activities) {
-  const currentDate = new Date(2024, 1, 28); // alter date here for weekly graph, default current week ( 2024, 1, 28 )
+  const currentDate = new Date(); // alter date here for weekly graph, default current week ( 2024, 1, 28 )
   // console.log(currentDate);
   const thisWeeksDates = weeklyDates(currentDate);
   const dailyTotals = [
@@ -130,11 +130,11 @@ export function weeklyDates(currentDate) {
   return week;
 }
 
-const thisWeek = weeklyDates(new Date());
-const testDate = new Date("2024-04-06T17:25:36Z").toDateString("en-uk");
+// const thisWeek = weeklyDates(new Date());
+// const testDate = new Date("2024-04-06T17:25:36Z").toDateString("en-uk");
 
 // returns the week number for a given date
-function calculateWeekNum(date) {
+export function getWeekNum(date) {
   const currentDate = new Date(date);
   const startDate = new Date(currentDate.getFullYear(), 0, 1);
   const days = Math.floor((currentDate - startDate) / (24 * 60 * 60 * 1000));

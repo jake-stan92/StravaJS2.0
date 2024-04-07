@@ -1,11 +1,52 @@
-.last5-table {
+/* .last5-table {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   place-items: center;
   text-align: center;
-  gap: 0.5rem;
+}
+
+.table-row {
+  display: flex;
+  justify-content: space-between;
+  grid-column-start: 1;
+  grid-column-end: 5;
 }
 
 .last5-table p {
   font-size: 1rem;
+  padding: 0.5rem;
+}
+
+.last5-table h5 {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+} */
+
+.last5-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0.5rem;
+}
+
+.last5-table td {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.last5-table th {
+  background-color: white;
+  padding: 0.5rem;
+}
+
+table tr:nth-child(odd) {
+  background-color: var(--stravaPeach);
+}
+
+table tr:nth-child(even) {
+  background-color: var(--stravaLightPeach);
 }
