@@ -17,3 +17,19 @@
 svg {
   width: 100px;
 }
+
+@media (width > 999px) {
+  .graph-collection {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .graph-container {
+    flex: 1;
+  }
+
+  canvas {
+    width: 100%;
+    height: 100%;
+  }
+}
