@@ -4,7 +4,7 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <div className="footer">
-      <h5>Footer</h5>
+      <h5>StravaJS &#169; 2024</h5>
     </div>
   );
 };

@@ -8,6 +8,9 @@ const Last5RunsTable = (props) => {
     <div className="last5-table">
       {!props.loadingState ? (
         <table>
+          <caption>
+            <h3>Last 5 runs</h3>
+          </caption>
           <tbody>
             <tr>
               <th>Date</th>

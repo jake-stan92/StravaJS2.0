@@ -8,7 +8,7 @@ export function getAvgDistance(activities) {
   });
   const totalKM = total / 1000;
   const averageDistance = (totalKM / activities.length).toFixed(2);
-  return averageDistance;
+  return Number(averageDistance);
 }
 
 // avg speed
@@ -17,9 +17,9 @@ export function getAvgSpeed(activities) {
   activities.map((run) => {
     total += run.average_speed;
   });
-  const average = total / 5;
+  const average = total / activities.length;
   const kiloPerHour = (average * 3.6).toFixed(2); // Convert S.I (m/s) units to KMH -- https://www.reddit.com/r/Strava/comments/pxbqql/strava_api_what_are_the_activitys_speed_fields/
-  return kiloPerHour;
+  return Number(kiloPerHour);
 }
 
 // year to date >> monthly count and distance
