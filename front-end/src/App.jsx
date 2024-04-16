@@ -31,7 +31,7 @@ function App() {
   useEffect(() => {
     const populateRuns = async () => {
       setLoadingState(true);
-      const response = await fetch("http://localhost:3000/");
+      const response = await fetch("http://localhost:3000/"); // change to hosted name or setup in env
       const data = await response.json();
       setLoadingState(false);
       const runData = data.payload;
