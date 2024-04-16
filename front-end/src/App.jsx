@@ -15,6 +15,7 @@ import Last5RunsTable from "./components/Last5RunsTable.jsx";
 import countSVG from "../src/assets/images/list-ol.svg";
 import lightningSVG from "../src/assets/images/lightning-charge.svg";
 import measureSVG from "../src/assets/images/rulers.svg";
+import LoadingIcon from "./components/LoadingIcon.jsx";
 
 function App() {
   const [runs, setRuns] = useState([]);
@@ -53,42 +54,69 @@ function App() {
       <Header />
       <div className="main">
         <div className="top-stat-collection">
-          <div className="top-stat" id="total-runs-stat">
-            <div className="stat-icon">
-              <img src={countSVG}></img>
+          {!loadingState ? (
+            <div className="top-stat" id="total-runs-stat">
+              <div className="stat-icon">
+                <img src={countSVG}></img>
+              </div>
+              <div className="top-stat-content">
+                <p>Runs this year:</p>
+                <p className="stat-figure">{runs.length}</p>
+              </div>
             </div>
-            <div className="top-stat-content">
-              <p>Runs this year:</p>
-              <p className="stat-figure">{runs.length}</p>
+          ) : (
+            <div className="top-stat-loading">
+              <LoadingIcon />
             </div>
-          </div>
-          <div className="top-stat" id="last5-avg-distance-stat">
-            <div className="stat-icon">
-              <img src={measureSVG}></img>
+          )}
+
+          {!loadingState ? (
+            <div className="top-stat" id="last5-avg-distance-stat">
+              <div className="stat-icon">
+                <img src={measureSVG}></img>
+              </div>
+              <div className="top-stat-content">
+                <p>Last 5 avg distance:</p>
+                <p className="stat-figure">{last5AvgDistance}km</p>
+              </div>
             </div>
-            <div className="top-stat-content">
-              <p>Last 5 avg distance:</p>
-              <p className="stat-figure">{last5AvgDistance}km</p>
+          ) : (
+            <div className="top-stat-loading">
+              <LoadingIcon />
             </div>
-          </div>
-          <div className="top-stat" id="avg-run-distance-stat">
-            <div className="stat-icon">
-              <img src={measureSVG}></img>
+          )}
+
+          {!loadingState ? (
+            <div className="top-stat" id="avg-run-distance-stat">
+              <div className="stat-icon">
+                <img src={measureSVG}></img>
+              </div>
+              <div className="top-stat-content">
+                <p>Avg run dist all:</p>
+                <p className="stat-figure">{avgDistanceTotal}km</p>
+              </div>
             </div>
-            <div className="top-stat-content">
-              <p>Avg run dist all:</p>
-              <p className="stat-figure">{avgDistanceTotal}km</p>
+          ) : (
+            <div className="top-stat-loading">
+              <LoadingIcon />
             </div>
-          </div>
-          <div className="top-stat" id="last5-avg-speed-stat">
-            <div className="stat-icon">
-              <img src={lightningSVG}></img>
+          )}
+
+          {!loadingState ? (
+            <div className="top-stat" id="last5-avg-speed-stat">
+              <div className="stat-icon">
+                <img src={lightningSVG}></img>
+              </div>
+              <div className="top-stat-content">
+                <p>Last 5 avg speed:</p>
+                <p className="stat-figure">{last5AvgSpeed}km/h</p>
+              </div>
             </div>
-            <div className="top-stat-content">
-              <p>Last 5 avg speed:</p>
-              <p className="stat-figure">{last5AvgSpeed}km/h</p>
+          ) : (
+            <div className="top-stat-loading">
+              <LoadingIcon />
             </div>
-          </div>
+          )}
         </div>
         <div className="graph-collection">
           <Graph

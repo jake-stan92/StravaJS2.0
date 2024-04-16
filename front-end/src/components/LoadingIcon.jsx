@@ -2,7 +2,11 @@ import React from "react";
 
 const LoadingIcon = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+    <svg
+      id="loading-icon"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 200 200"
+    >
       <circle
         fill="#FC5200"
         stroke="#FC5200"

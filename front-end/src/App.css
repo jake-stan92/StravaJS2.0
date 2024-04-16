@@ -24,6 +24,18 @@
   background-color: var(--stravaOffWhite);
 }
 
+.top-stat-collection #loading-icon {
+  width: 50px;
+}
+
+.top-stat-loading {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80px;
+}
+
 .top-stat-collection {
   margin-top: 0.5rem;
   display: grid;
