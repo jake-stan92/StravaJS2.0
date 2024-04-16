@@ -7,7 +7,7 @@ import {
   getAthleteAccessCode,
   getAthleteActivities,
   getAthletes,
-} from "./src/models/athletes.js";
+} from "./models/athletes.js";
 
 const app = express();
 
