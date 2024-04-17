@@ -24,7 +24,8 @@ const Last5RunsTable = (props) => {
                 Avg Speed<br></br>(km/h)
               </th>
             </tr>
-            {props.data.map((run) => (
+            {/* sliced here to limit output */}
+            {props.runs.slice(0, 5).map((run) => (
               <tr key={runNum++}>
                 <td>{new Date(run.start_date).toLocaleDateString("en-uk")}</td>
                 <td>{(run.distance / 1000).toFixed(2)}</td>

@@ -4,22 +4,13 @@ import "./App.css";
 import Footer from "./components/Footer";
 import Graph from "./components/Graph";
 
-import {
-  getLast5,
-  getAvgDistance,
-  getAvgSpeed,
-  getMonthlyTotals,
-  getDailyTotal,
-} from "./components/helpers.js";
+import { getMonthlyTotals, getDailyTotal } from "./components/helpers.js";
 import Last5RunsTable from "./components/Last5RunsTable.jsx";
 import TopStatContainer from "./components/TopStatContainer.jsx";
+import OtherStats from "./components/OtherStats.jsx";
 
 function App() {
   const [runs, setRuns] = useState([]);
-  const [last5, setLast5] = useState([]);
-  // const [last5AvgDistance, setLast5AverageDistance] = useState(0);
-  // const [last5AvgSpeed, setLast5AverageSpeed] = useState(0);
-  // const [avgDistanceTotal, setAvgDistanceTotal] = useState(0);
   const [monthlyTotals, setMonthlyTotals] = useState([]);
   const [dailyTotals, setDailytotals] = useState([]);
   const [loadingState, setLoadingState] = useState(false);
@@ -28,19 +19,15 @@ function App() {
   useEffect(() => {
     const populateRuns = async () => {
       setLoadingState(true);
-      const response = await fetch("https://stravajs2-0.onrender.com/"); // change to hosted name or setup in env
+      // const response = await fetch("https://stravajs2-0.onrender.com/"); // change to hosted name or setup in env
+      const response = await fetch("http://localhost:3000/");
       const data = await response.json();
-      setLoadingState(false);
       const runData = data.payload;
-      const last5Data = getLast5(runData);
       setRuns(runData);
-      // console.log(runData);
-      setLast5(last5Data);
-      // setAvgDistanceTotal(getAvgDistance(runData));
       setMonthlyTotals(getMonthlyTotals(runData));
-      // setLast5AverageDistance(getAvgDistance(last5Data));
-      // setLast5AverageSpeed(getAvgSpeed(last5Data));
       setDailytotals(getDailyTotal(runData));
+      setLoadingState(false);
+      // console.log(runData);
     };
     populateRuns();
     return () => {};
@@ -50,13 +37,7 @@ function App() {
     <>
       <Header />
       <div className="main">
-        <TopStatContainer
-          loadingState={loadingState}
-          runs={runs}
-          // last5AvgDistance={last5AvgDistance}
-          // avgDistanceTotal={avgDistanceTotal}
-          // last5AvgSpeed={last5AvgSpeed}
-        />
+        <TopStatContainer loadingState={loadingState} runs={runs} />
 
         <div className="graph-collection">
           <Graph
@@ -79,7 +60,8 @@ function App() {
           />
         </div>
         <div className="bottom-stat-collection">
-          <Last5RunsTable data={last5} loadingState={loadingState} />
+          <Last5RunsTable loadingState={loadingState} runs={runs} />
+          <OtherStats loadingState={loadingState} />
         </div>
       </div>
       <Footer />

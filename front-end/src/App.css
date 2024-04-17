@@ -21,11 +21,15 @@
 }
 
 .main {
+  display: flex;
+  flex-direction: column;
   flex: 1;
   background-color: var(--stravaOffWhite);
 }
 
 .bottom-stat-collection {
+  display: flex;
+  gap: 1rem;
   padding: 0.5rem;
   width: 100%;
 }
@@ -40,9 +44,38 @@
   grid-column-end: 3;
 }
 
+.other-stats {
+  display: none;
+}
+
 @media (width > 999px) {
   .main {
     width: 1000px;
     margin: auto;
+  }
+  .other-stats {
+    flex: 1;
+    padding: 0rem 0.5rem 1rem 0.5rem;
+    background-color: white;
+    display: grid;
+    flex: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .other-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .other-stats h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .other-stat-loading {
+    display: grid;
+    place-content: center;
   }
 }
