@@ -5,6 +5,6 @@ import Header from "../src/components/Header";
 describe("Header", () => {
   test("renders", () => {
     render(<Header />);
-    expect(screen.getByText("StravaJS2.0")).toBeDefined();
+    expect(screen.getByText("StravaJS")).toBeDefined();
   });
 });
