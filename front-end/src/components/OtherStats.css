@@ -9,7 +9,6 @@
   }
   .other-stats {
     flex: 1;
-    padding: 0rem 1rem 1rem 1rem;
     background-color: white;
     display: grid;
     flex: 1;
@@ -20,12 +19,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 
   .other-stats h3 {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--stravaRed);
+    height: 60px;
   }
 
   .other-stat-loading {

@@ -33,7 +33,9 @@ table {
 }
 
 table h3 {
-  margin-bottom: 1rem;
+  padding: 1rem 0rem;
+  height: 60px;
+  color: var(--stravaRed);
 }
 
 .last5-table {
@@ -43,7 +45,7 @@ table h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem 0.5rem 1rem 0.5rem;
+  /* padding: 1rem 0.5rem 1rem 0.5rem; */
   margin-bottom: 0.5rem;
   flex: 2;
 }
@@ -54,15 +56,15 @@ table h3 {
 }
 
 .last5-table th {
-  background-color: white;
+  background-color: rgb(244, 244, 244);
   padding: 0.25rem;
   font-size: 0.75rem;
 }
 
 table tr:nth-child(odd) {
-  background-color: var(--stravaPeach);
+  background-color: rgb(244, 244, 244);
 }
 
 table tr:nth-child(even) {
-  background-color: var(--stravaLightPeach);
+  /* background-color: var(--stravaLightPeach); */
 }
