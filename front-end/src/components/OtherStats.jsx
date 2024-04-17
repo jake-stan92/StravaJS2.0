@@ -2,11 +2,12 @@ import React from "react";
 import LoadingIcon from "./LoadingIcon";
 import "./OtherStats.css";
 
-import { getAvgHeartRate, getHighestHR } from "./helpers";
+import { getAvgHeartRate, getHighestHR, getActivityLikes } from "./helpers";
 
 const OtherStats = (props) => {
   const avgHeartRate = getAvgHeartRate(props.runs);
   const highestHR = getHighestHR(props.runs);
+  const activityLikes = getActivityLikes(props.runs);
   return (
     <div className="other-stats">
       {!props.loadingState ? (
@@ -22,11 +23,11 @@ const OtherStats = (props) => {
           </div>
           <div className="other-stat">
             <p>most liked activity</p>
-            <p>date & likes</p>
+            <p>{activityLikes.mostLikes} Likes</p>
           </div>
           <div className="other-stat">
             <p>total likes</p>
-            <p>13</p>
+            <p>{activityLikes.totalLikes}</p>
           </div>
         </>
       ) : (

@@ -127,7 +127,7 @@ export function getAvgHeartRate(activities) {
     }
   });
   avgHeartRate = totalHR / activities.length;
-  return avgHeartRate.toFixed(2);
+  return Math.round(avgHeartRate);
 }
 
 export function getHighestHR(activities) {
@@ -139,7 +139,19 @@ export function getHighestHR(activities) {
       }
     }
   });
-  return highestHR;
+  return Math.round(highestHR);
+}
+
+export function getActivityLikes(activities) {
+  let totalLikes = 0;
+  let mostLikedActvity = 0;
+  activities.map((run) => {
+    totalLikes += run.kudos_count;
+    if (run.kudos_count > mostLikedActvity) {
+      mostLikedActvity = run.kudos_count;
+    }
+  });
+  return { mostLikes: mostLikedActvity, totalLikes: totalLikes };
 }
 
 // next stats
