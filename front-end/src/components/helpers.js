@@ -130,6 +130,18 @@ export function getAvgHeartRate(activities) {
   return avgHeartRate.toFixed(2);
 }
 
+export function getHighestHR(activities) {
+  let highestHR = 0;
+  activities.map((run) => {
+    if (run.max_heartrate) {
+      if (run.max_heartrate > highestHR) {
+        highestHR = run.max_heartrate;
+      }
+    }
+  });
+  return highestHR;
+}
+
 // next stats
 // run.average_heartrate 157.2
 // run.kudos_count 1 === most liked and total likes
