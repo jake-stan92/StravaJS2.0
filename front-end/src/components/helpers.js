@@ -118,14 +118,23 @@ export function getDailyTotal(activities) {
   return dailyTotals;
 }
 
-// get lastest 5 runs loop activities index 0 - 4
-export function getLast5(activities) {
-  const last5 = [];
-  for (let i = 0; i < 5; i++) {
-    last5.push(activities[i]);
-  }
-  return last5;
+export function getAvgHeartRate(activities) {
+  let avgHeartRate = 0;
+  let totalHR = 0;
+  activities.map((run) => {
+    if (run.average_heartrate) {
+      totalHR += run.average_heartrate;
+    }
+  });
+  avgHeartRate = totalHR / activities.length;
+  return avgHeartRate.toFixed(2);
 }
+
+// next stats
+// run.average_heartrate 157.2
+// run.kudos_count 1 === most liked and total likes
+// run.max_heartrate 179
+// .max_speed
 
 export function weeklyDates(currentDate) {
   // return dates of the week for a given day

@@ -1,15 +1,23 @@
 import React from "react";
 import LoadingIcon from "./LoadingIcon";
+import "./OtherStats.css";
+
+import { getAvgHeartRate } from "./helpers";
 
 const OtherStats = (props) => {
+  const avgHeartRate = getAvgHeartRate(props.runs);
   return (
     <div className="other-stats">
       {!props.loadingState ? (
         <>
           <h3>Other Stats</h3>
           <div className="other-stat">
-            <p>highest heartrate</p>
-            <p>120</p>
+            <p>Average HR</p>
+            <p>{String(avgHeartRate)}</p>
+          </div>
+          <div className="other-stat">
+            <p>Highest HR</p>
+            <p>32</p>
           </div>
           <div className="other-stat">
             <p>most liked activity</p>
@@ -18,10 +26,6 @@ const OtherStats = (props) => {
           <div className="other-stat">
             <p>total likes</p>
             <p>13</p>
-          </div>
-          <div className="other-stat">
-            <p>highest avg temp</p>
-            <p>32</p>
           </div>
         </>
       ) : (

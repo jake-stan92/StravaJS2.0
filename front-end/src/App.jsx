@@ -27,7 +27,7 @@ function App() {
       setMonthlyTotals(getMonthlyTotals(runData));
       setDailytotals(getDailyTotal(runData));
       setLoadingState(false);
-      // console.log(runData);
+      console.log(runData);
     };
     populateRuns();
     return () => {};
@@ -61,7 +61,7 @@ function App() {
         </div>
         <div className="bottom-stat-collection">
           <Last5RunsTable loadingState={loadingState} runs={runs} />
-          <OtherStats loadingState={loadingState} />
+          <OtherStats loadingState={loadingState} runs={runs} />
         </div>
       </div>
       <Footer />
