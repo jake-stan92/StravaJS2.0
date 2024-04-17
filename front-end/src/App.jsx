@@ -17,9 +17,9 @@ import TopStatContainer from "./components/TopStatContainer.jsx";
 function App() {
   const [runs, setRuns] = useState([]);
   const [last5, setLast5] = useState([]);
-  const [last5AvgDistance, setLast5AverageDistance] = useState(0);
-  const [last5AvgSpeed, setLast5AverageSpeed] = useState(0);
-  const [avgDistanceTotal, setAvgDistanceTotal] = useState(0);
+  // const [last5AvgDistance, setLast5AverageDistance] = useState(0);
+  // const [last5AvgSpeed, setLast5AverageSpeed] = useState(0);
+  // const [avgDistanceTotal, setAvgDistanceTotal] = useState(0);
   const [monthlyTotals, setMonthlyTotals] = useState([]);
   const [dailyTotals, setDailytotals] = useState([]);
   const [loadingState, setLoadingState] = useState(false);
@@ -36,10 +36,10 @@ function App() {
       setRuns(runData);
       // console.log(runData);
       setLast5(last5Data);
-      setAvgDistanceTotal(getAvgDistance(runData));
+      // setAvgDistanceTotal(getAvgDistance(runData));
       setMonthlyTotals(getMonthlyTotals(runData));
-      setLast5AverageDistance(getAvgDistance(last5Data));
-      setLast5AverageSpeed(getAvgSpeed(last5Data));
+      // setLast5AverageDistance(getAvgDistance(last5Data));
+      // setLast5AverageSpeed(getAvgSpeed(last5Data));
       setDailytotals(getDailyTotal(runData));
     };
     populateRuns();
@@ -53,9 +53,9 @@ function App() {
         <TopStatContainer
           loadingState={loadingState}
           runs={runs}
-          last5AvgDistance={last5AvgDistance}
-          avgDistanceTotal={avgDistanceTotal}
-          last5AvgSpeed={last5AvgSpeed}
+          // last5AvgDistance={last5AvgDistance}
+          // avgDistanceTotal={avgDistanceTotal}
+          // last5AvgSpeed={last5AvgSpeed}
         />
 
         <div className="graph-collection">

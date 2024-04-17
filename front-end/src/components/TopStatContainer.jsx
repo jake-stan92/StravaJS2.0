@@ -5,7 +5,12 @@ import lightningSVG from "..//assets/images/lightning-charge.svg";
 import measureSVG from "../assets/images/rulers.svg";
 import "./TopStatContainer.css";
 
+import { getAvgDistance, getAvgSpeed, getTotalDistance } from "./helpers";
+
 const TopStatContainer = (props) => {
+  const avgDistance = getAvgDistance(props.runs);
+  const avgSpeed = getAvgSpeed(props.runs);
+  const totalDistance = getTotalDistance(props.runs);
   return (
     <div className="top-stat-collection">
       <TopStat
@@ -15,26 +20,27 @@ const TopStatContainer = (props) => {
         title={"Runs This Year:"}
         figure={props.runs.length}
       />
+
+      <TopStat
+        loadingState={props.loadingState}
+        id={"avg-run-distance-stat"}
+        img={measureSVG}
+        title={"Total Distance:"}
+        figure={`${totalDistance}km`}
+      />
       <TopStat
         loadingState={props.loadingState}
         id={"last5-avg-distance-stat"}
         img={measureSVG}
         title={"Last 5 avg distance:"}
-        figure={`${props.last5AvgDistance}km`}
-      />
-      <TopStat
-        loadingState={props.loadingState}
-        id={"avg-run-distance-stat"}
-        img={measureSVG}
-        title={"Avf run dist all:"}
-        figure={`${props.avgDistanceTotal}km`}
+        figure={`${avgDistance}km`}
       />
       <TopStat
         loadingState={props.loadingState}
         id={"last5-avg-speed-stat"}
         img={lightningSVG}
         title={"Last 5 avg speed:"}
-        figure={`${props.last5AvgSpeed}km/h`}
+        figure={`${avgSpeed}km/h`}
       />
     </div>
   );

@@ -1,5 +1,15 @@
 // total runs is sorted on page load
 
+// total distance
+export function getTotalDistance(activities) {
+  let total = 0;
+  activities.map((activity) => {
+    total += activity.distance;
+  });
+  const totalKM = total / 1000;
+  return totalKM.toFixed(2);
+}
+
 // avg distance
 export function getAvgDistance(activities) {
   let total = 0;
