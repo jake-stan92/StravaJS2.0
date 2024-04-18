@@ -19,8 +19,8 @@ function App() {
   useEffect(() => {
     const populateRuns = async () => {
       setLoadingState(true);
-      // const response = await fetch("https://stravajs2-0.onrender.com/"); // change to hosted name or setup in env
-      const response = await fetch("http://localhost:3000/");
+      const response = await fetch("https://stravajs2-0.onrender.com/"); // change to hosted name or setup in env
+      // const response = await fetch("http://localhost:3000/");
       const data = await response.json();
       const runData = data.payload;
       setRuns(runData);
