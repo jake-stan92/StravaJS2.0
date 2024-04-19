@@ -32,10 +32,12 @@ table {
   border-collapse: collapse;
 }
 
-table h3 {
+.subtitle {
   padding: 1rem 0rem;
   height: 60px;
   color: var(--stravaRed);
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
 .last5-table {

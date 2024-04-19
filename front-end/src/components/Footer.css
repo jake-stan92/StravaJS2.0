@@ -4,3 +4,7 @@
   color: var(--stravaRed);
   padding: 1rem;
 }
+
+.footer-subtitle {
+  font-weight: 600;
+}

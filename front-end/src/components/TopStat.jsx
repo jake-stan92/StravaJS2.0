@@ -8,7 +8,7 @@ const TopStat = (props) => {
       {!props.loadingState ? (
         <div className="top-stat" id={props.id}>
           <div className="stat-icon">
-            <img src={props.img}></img>
+            <img src={props.img} alt="small-statistic-icon"></img>
           </div>
           <div className="top-stat-content">
             <p className="stat-title">{props.title}</p>

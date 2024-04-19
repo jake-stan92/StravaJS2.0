@@ -9,7 +9,7 @@ const Last5RunsTable = (props) => {
       {!props.loadingState ? (
         <table>
           <caption>
-            <h3>Last 5 runs</h3>
+            <p className="subtitle">Last 5 runs</p>
           </caption>
           <tbody>
             <tr>
