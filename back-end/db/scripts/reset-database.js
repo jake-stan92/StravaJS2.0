@@ -36,7 +36,7 @@ async function resetDatabase() {
     await pool.query(`
       INSERT INTO athletes (name, client_id, client_secret, refresh_token)
       VALUES 
-        ('Jake Stanier', '***REMOVED***', '***REMOVED***', '***REMOVED***')
+        ('Jake Stanier', '', '', '')
         `);
 
     // Validate script
