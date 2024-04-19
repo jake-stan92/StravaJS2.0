@@ -12,7 +12,7 @@ const OtherStats = (props) => {
     <div className="other-stats">
       {!props.loadingState ? (
         <>
-          <h3>Other Stats</h3>
+          <p className="subtitle">Other Stats</p>
           <div className="other-stat filled">
             <span className="circle"></span>
             <p>Average HR</p>
