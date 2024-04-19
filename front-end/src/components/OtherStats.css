@@ -11,16 +11,19 @@
     flex: 1;
     background-color: white;
     display: grid;
-    flex: 1;
     margin-bottom: 0.5rem;
+    padding-bottom: 0.75rem;
   }
 
   .other-stat {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-left: 1rem;
     margin-right: 1rem;
+    border-left: 1px dashed black;
+    padding: 0rem 0.75rem;
   }
 
   .other-stats h3 {
@@ -28,11 +31,23 @@
     justify-content: center;
     align-items: center;
     color: var(--stravaRed);
-    height: 60px;
+  }
+
+  .filled {
+    background-color: rgb(244, 244, 244);
   }
 
   .other-stat-loading {
     display: grid;
     place-content: center;
+  }
+
+  .circle {
+    height: 8px;
+    width: 8px;
+    background-color: var(--stravaRed);
+    border-radius: 50%;
+    position: absolute;
+    left: -5px;
   }
 }

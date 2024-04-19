@@ -3,6 +3,8 @@ import TopStat from "./TopStat";
 import countSVG from "../assets/images/list-ol.svg";
 import lightningSVG from "..//assets/images/lightning-charge.svg";
 import measureSVG from "../assets/images/rulers.svg";
+import runnerSVG from "../assets/images/running-man.svg";
+
 import "./TopStatContainer.css";
 
 import { getAvgDistance, getAvgSpeed, getTotalDistance } from "./helpers";
@@ -24,7 +26,7 @@ const TopStatContainer = (props) => {
       <TopStat
         loadingState={props.loadingState}
         id={"avg-run-distance-stat"}
-        img={measureSVG}
+        img={runnerSVG}
         title={"Total Distance:"}
         figure={`${totalDistance}km`}
       />

@@ -11,7 +11,7 @@ const TopStat = (props) => {
             <img src={props.img}></img>
           </div>
           <div className="top-stat-content">
-            <p>{props.title}</p>
+            <p className="stat-title">{props.title}</p>
             <p className="stat-figure">{props.figure}</p>
           </div>
         </div>

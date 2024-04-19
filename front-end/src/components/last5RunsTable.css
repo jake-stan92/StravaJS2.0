@@ -45,7 +45,7 @@ table h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* padding: 1rem 0.5rem 1rem 0.5rem; */
+  padding: 0rem 1rem;
   margin-bottom: 0.5rem;
   flex: 2;
 }

@@ -18,6 +18,10 @@
   color: var(--stravaRed);
 }
 
+.stat-title {
+  font-size: 0.9rem;
+}
+
 .stat-figure {
   font-weight: 700;
   font-size: 1.1rem;
@@ -27,5 +31,9 @@
   .top-stat,
   .top-stat-loading {
     flex: 1;
+  }
+
+  .stat-title {
+    font-size: 1rem;
   }
 }
