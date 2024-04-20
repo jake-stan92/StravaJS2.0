@@ -29,7 +29,7 @@ const Graph = (props) => {
               backgroundColor: "#fc5200",
             },
             {
-              label: "Total Runs",
+              label: `Total ${props.currentlyDisplaying}`,
               data: monthlyTotals.map((row) => row.count),
               type: "line",
               order: 0,
@@ -90,7 +90,7 @@ const Graph = (props) => {
       };
     }
     // when component unmounts // prevents console error of already used chart canvas
-  }); // empty here working for now
+  }, [props.data]); // empty here working for now
 
   return (
     <div className="graph-container">

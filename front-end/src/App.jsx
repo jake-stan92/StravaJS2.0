@@ -85,6 +85,7 @@ function App() {
             lineGraph={true}
             // state={monthlyTotals}
             loadingState={loadingState}
+            currentlyDisplaying={currentlyDisplaying}
           />
           <Graph
             data={activitiesToDisplay}
