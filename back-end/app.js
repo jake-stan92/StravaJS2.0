@@ -29,11 +29,12 @@ app.get("/", async (req, res) => {
 
   const activities = await getAthleteActivities(athleteCode);
 
-  const allRuns = await filterActivitiesByType("Run", activities);
+  // const allRuns = await filterActivitiesByType("Run", activities);
 
-  const thisYearsRuns = await filterByYear(currentYear, allRuns);
+  // return all acitivities and filter in front end
+  const thisYearsActivities = await filterByYear(currentYear, activities);
 
-  res.status(200).json({ status: "success", payload: thisYearsRuns });
+  res.status(200).json({ status: "success", payload: thisYearsActivities });
 });
 
 // Start the server and listen on the specified port
