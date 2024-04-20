@@ -1,4 +1,14 @@
-// total runs is sorted on page load
+// filter activity by type (run vs walk)
+export function filterActivitiesByType(type, activities) {
+  const filteredActivities = [];
+
+  activities.map((activity) => {
+    if (activity.type === type) {
+      filteredActivities.push(activity);
+    }
+  });
+  return filteredActivities;
+}
 
 // total distance
 export function getTotalDistance(activities) {

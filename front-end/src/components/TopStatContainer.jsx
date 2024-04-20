@@ -10,17 +10,17 @@ import "./TopStatContainer.css";
 import { getAvgDistance, getAvgSpeed, getTotalDistance } from "./helpers";
 
 const TopStatContainer = (props) => {
-  const avgDistance = getAvgDistance(props.runs);
-  const avgSpeed = getAvgSpeed(props.runs);
-  const totalDistance = getTotalDistance(props.runs);
+  const avgDistance = getAvgDistance(props.activities);
+  const avgSpeed = getAvgSpeed(props.activities);
+  const totalDistance = getTotalDistance(props.activities);
   return (
     <div className="top-stat-collection">
       <TopStat
         loadingState={props.loadingState}
         id={"total-runs-stat"}
         img={countSVG}
-        title={"Runs This Year:"}
-        figure={props.runs.length}
+        title={`${props.currentlyDisplaying} This Year:`}
+        figure={props.activities.length}
       />
 
       <TopStat
