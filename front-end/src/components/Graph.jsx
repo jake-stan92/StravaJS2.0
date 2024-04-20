@@ -2,11 +2,16 @@ import React from "react";
 import { useEffect } from "react";
 import "./Graph.css";
 import Chart from "chart.js/auto";
-import { getMonthlyTotals, getWeekNum } from "../components/helpers.js";
+import {
+  getDailyTotal,
+  getMonthlyTotals,
+  getWeekNum,
+} from "../components/helpers.js";
 import LoadingIcon from "./LoadingIcon.jsx";
 
 const Graph = (props) => {
   const monthlyTotals = getMonthlyTotals(props.data);
+  const dailyTotals = getDailyTotal(props.data);
   useEffect(() => {
     let currentWeekNum = getWeekNum(new Date());
     let chartLocation = document.getElementById(`graph${props.graphNum}`);
@@ -59,11 +64,11 @@ const Graph = (props) => {
       const myChart = new Chart(chartLocation, {
         type: "bar",
         data: {
-          labels: monthlyTotals.map((row) => row[props.time]),
+          labels: dailyTotals.map((row) => row[props.time]),
           datasets: [
             {
               label: `${props.title} - Week${currentWeekNum}`,
-              data: monthlyTotals.map((row) => row.distance),
+              data: dailyTotals.map((row) => row.distance),
               order: 1,
               yAxisID: "y",
               backgroundColor: "#fc5200",
@@ -85,7 +90,7 @@ const Graph = (props) => {
       };
     }
     // when component unmounts // prevents console error of already used chart canvas
-  }, [monthlyTotals]);
+  }); // empty here working for now
 
   return (
     <div className="graph-container">

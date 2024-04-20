@@ -17,7 +17,7 @@ function App() {
   const [allActivities, setAllActivities] = useState([]);
   const [activitiesToDisplay, setActivitiesToDisplay] = useState([]);
   const [currentlyDisplaying, setCurrentlyDisplaying] = useState("");
-  const [monthlyTotals, setMonthlyTotals] = useState([]);
+  // const [monthlyTotals, setMonthlyTotals] = useState([]);
   const [dailyTotals, setDailytotals] = useState([]);
   const [loadingState, setLoadingState] = useState(false);
   // state is not a variable!! try to refactor with just runs as state and pass to other comps
@@ -34,7 +34,7 @@ function App() {
       // const allWalks = filterActivitiesByType("Walk", allActivities);
       setAllActivities(activities);
       setActivitiesToDisplay(allRuns);
-      setMonthlyTotals(getMonthlyTotals(allRuns));
+      // setMonthlyTotals(getMonthlyTotals(allRuns));
       setDailytotals(getDailyTotal(allRuns));
       setLoadingState(false);
       setCurrentlyDisplaying("Runs");
@@ -86,15 +86,15 @@ function App() {
             // state={monthlyTotals}
             loadingState={loadingState}
           />
-          {/* <Graph
-            data={dailyTotals}
+          <Graph
+            data={activitiesToDisplay}
             graphNum={2}
             time={"day"}
             title={"Daily Total (km)"}
             lineGraph={false}
-            state={dailyTotals}
+            // state={dailyTotals}
             loadingState={loadingState}
-          /> */}
+          />
         </div>
         {/* <div className="bottom-stat-collection">
           <Last5RunsTable loadingState={loadingState} runs={runs} />
