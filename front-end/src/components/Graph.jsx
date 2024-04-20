@@ -2,10 +2,11 @@ import React from "react";
 import { useEffect } from "react";
 import "./Graph.css";
 import Chart from "chart.js/auto";
-import { getWeekNum } from "../components/helpers.js";
+import { getMonthlyTotals, getWeekNum } from "../components/helpers.js";
 import LoadingIcon from "./LoadingIcon.jsx";
 
 const Graph = (props) => {
+  const monthlyTotals = getMonthlyTotals(props.data);
   useEffect(() => {
     let currentWeekNum = getWeekNum(new Date());
     let chartLocation = document.getElementById(`graph${props.graphNum}`);
@@ -13,18 +14,18 @@ const Graph = (props) => {
       const myChart = new Chart(chartLocation, {
         type: "bar",
         data: {
-          labels: props.data.map((row) => row[props.time]),
+          labels: monthlyTotals.map((row) => row[props.time]),
           datasets: [
             {
               label: props.title,
-              data: props.data.map((row) => row.distance),
+              data: monthlyTotals.map((row) => row.distance),
               order: 1,
               yAxisID: "y",
               backgroundColor: "#fc5200",
             },
             {
               label: "Total Runs",
-              data: props.data.map((row) => row.count),
+              data: monthlyTotals.map((row) => row.count),
               type: "line",
               order: 0,
               yAxisID: "y1",
@@ -58,11 +59,11 @@ const Graph = (props) => {
       const myChart = new Chart(chartLocation, {
         type: "bar",
         data: {
-          labels: props.data.map((row) => row[props.time]),
+          labels: monthlyTotals.map((row) => row[props.time]),
           datasets: [
             {
               label: `${props.title} - Week${currentWeekNum}`,
-              data: props.data.map((row) => row.distance),
+              data: monthlyTotals.map((row) => row.distance),
               order: 1,
               yAxisID: "y",
               backgroundColor: "#fc5200",
@@ -84,7 +85,7 @@ const Graph = (props) => {
       };
     }
     // when component unmounts // prevents console error of already used chart canvas
-  }, [props.state]);
+  }, [monthlyTotals]);
 
   return (
     <div className="graph-container">

@@ -70,23 +70,23 @@ function App() {
         <button onClick={populateWalks}>Set Walks</button>
         <button onClick={populateRuns}>Set Runs</button>
 
-        <div className="test-div">
+        {/* <div className="test-div">
           {activitiesToDisplay.map((activity) => {
             return <p>{activity.type}</p>;
           })}
-        </div>
+        </div> */}
 
-        {/* <div className="graph-collection">
+        <div className="graph-collection">
           <Graph
-            data={monthlyTotals}
+            data={activitiesToDisplay}
             graphNum={1}
             time={"month"}
             title={"Monthly Total (km)"}
             lineGraph={true}
-            state={monthlyTotals}
+            // state={monthlyTotals}
             loadingState={loadingState}
           />
-          <Graph
+          {/* <Graph
             data={dailyTotals}
             graphNum={2}
             time={"day"}
@@ -94,8 +94,8 @@ function App() {
             lineGraph={false}
             state={dailyTotals}
             loadingState={loadingState}
-          />
-        </div> */}
+          /> */}
+        </div>
         {/* <div className="bottom-stat-collection">
           <Last5RunsTable loadingState={loadingState} runs={runs} />
           <OtherStats loadingState={loadingState} runs={runs} />
