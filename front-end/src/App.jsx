@@ -12,6 +12,7 @@ import {
 import Last5RunsTable from "./components/Last5RunsTable.jsx";
 import TopStatContainer from "./components/TopStatContainer.jsx";
 import OtherStats from "./components/OtherStats.jsx";
+import SliderToggle from "./components/SliderToggle.jsx";
 
 function App() {
   const [allActivities, setAllActivities] = useState([]);
@@ -39,7 +40,7 @@ function App() {
       setLoadingState(false);
       setCurrentlyDisplaying("Runs");
       // console.log(runData);
-      console.log(allRuns);
+      // console.log(allRuns);
       // console.log(allWalks);
     };
     getActivities();
@@ -58,6 +59,18 @@ function App() {
     setCurrentlyDisplaying("Runs");
   };
 
+  const handleToggle = (e) => {
+    if (e.target.value === "on") {
+      e.target.value = "off";
+      populateWalks();
+    } else if (e.target.value === "off") {
+      e.target.value = "on";
+      populateRuns();
+    }
+
+    console.log(e.target.value);
+  };
+
   return (
     <>
       <Header />
@@ -70,11 +83,10 @@ function App() {
         <button onClick={populateWalks}>Set Walks</button>
         <button onClick={populateRuns}>Set Runs</button>
 
-        {/* <div className="test-div">
-          {activitiesToDisplay.map((activity) => {
-            return <p>{activity.type}</p>;
-          })}
-        </div> */}
+        <SliderToggle
+          populateRuns={populateRuns}
+          populateWalks={populateWalks}
+        />
 
         <div className="graph-collection">
           <Graph
