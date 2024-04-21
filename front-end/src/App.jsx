@@ -106,10 +106,17 @@ function App() {
             loadingState={loadingState}
           />
         </div>
-        {/* <div className="bottom-stat-collection">
-          <Last5RunsTable loadingState={loadingState} runs={runs} />
-          <OtherStats loadingState={loadingState} runs={runs} />
-        </div> */}
+        <div className="bottom-stat-collection">
+          <Last5RunsTable
+            loadingState={loadingState}
+            activities={activitiesToDisplay}
+            currentlyDisplaying={currentlyDisplaying}
+          />
+          <OtherStats
+            loadingState={loadingState}
+            activities={activitiesToDisplay}
+          />
+        </div>
       </div>
       <Footer />
     </>

@@ -5,9 +5,9 @@ import "./OtherStats.css";
 import { getAvgHeartRate, getHighestHR, getActivityLikes } from "./helpers";
 
 const OtherStats = (props) => {
-  const avgHeartRate = getAvgHeartRate(props.runs);
-  const highestHR = getHighestHR(props.runs);
-  const activityLikes = getActivityLikes(props.runs);
+  const avgHeartRate = getAvgHeartRate(props.activities);
+  const highestHR = getHighestHR(props.activities);
+  const activityLikes = getActivityLikes(props.activities);
   return (
     <div className="other-stats">
       {!props.loadingState ? (

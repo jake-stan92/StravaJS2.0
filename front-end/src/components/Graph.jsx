@@ -45,6 +45,11 @@ const Graph = (props) => {
               type: "linear",
               display: true,
               position: "left",
+              title: {
+                display: true,
+                text: "km",
+                padding: 0,
+              },
             },
             y1: {
               type: "linear",
@@ -52,6 +57,11 @@ const Graph = (props) => {
               position: "right",
               grid: {
                 drawOnChartArea: false, // only want 1 set of grid lines
+              },
+              title: {
+                display: true,
+                text: "count",
+                padding: 0,
               },
             },
           },
@@ -81,6 +91,11 @@ const Graph = (props) => {
               type: "linear",
               display: true,
               position: "left",
+              title: {
+                display: "true",
+                text: "km",
+                padding: 0,
+              },
             },
           },
         },
