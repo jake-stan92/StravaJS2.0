@@ -174,7 +174,7 @@ export function weeklyDates(currentDate) {
   // return dates of the week for a given day
   const week = [];
   // Starting Monday not Sunday
-  currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 1);
+  currentDate.setDate(currentDate.getDate() - currentDate.getDay() - 6);
   for (let i = 0; i < 7; i++) {
     let date = new Date(currentDate);
     week.push(date.toDateString());

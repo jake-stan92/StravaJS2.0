@@ -41,7 +41,6 @@ function App() {
       setCurrentlyDisplaying("Runs");
       // console.log(runData);
       // console.log(allRuns);
-      // console.log(allWalks);
     };
     getActivities();
     return () => {};
