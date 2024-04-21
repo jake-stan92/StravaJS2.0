@@ -4,11 +4,7 @@ import "./App.css";
 import Footer from "./components/Footer";
 import Graph from "./components/Graph";
 
-import {
-  getMonthlyTotals,
-  getDailyTotal,
-  filterActivitiesByType,
-} from "./components/helpers.js";
+import { filterActivitiesByType } from "./components/helpers.js";
 import Last5RunsTable from "./components/Last5RunsTable.jsx";
 import TopStatContainer from "./components/TopStatContainer.jsx";
 import OtherStats from "./components/OtherStats.jsx";
@@ -18,8 +14,6 @@ function App() {
   const [allActivities, setAllActivities] = useState([]);
   const [activitiesToDisplay, setActivitiesToDisplay] = useState([]);
   const [currentlyDisplaying, setCurrentlyDisplaying] = useState("");
-  // const [monthlyTotals, setMonthlyTotals] = useState([]);
-  const [dailyTotals, setDailytotals] = useState([]);
   const [loadingState, setLoadingState] = useState(false);
   // state is not a variable!! try to refactor with just runs as state and pass to other comps
 
@@ -27,20 +21,15 @@ function App() {
   useEffect(() => {
     const getActivities = async () => {
       setLoadingState(true);
-      // const response = await fetch("https://stravajs2-0.onrender.com/"); // change to hosted name or setup in env
-      const response = await fetch("http://localhost:3000/");
+      const response = await fetch("https://stravajs2-0.onrender.com/"); // change to hosted name or setup in env
+      // const response = await fetch("http://localhost:3000/");
       const data = await response.json();
       const activities = data.payload;
       const allRuns = filterActivitiesByType("Run", activities);
-      // const allWalks = filterActivitiesByType("Walk", allActivities);
       setAllActivities(activities);
       setActivitiesToDisplay(allRuns);
-      // setMonthlyTotals(getMonthlyTotals(allRuns));
-      setDailytotals(getDailyTotal(allRuns));
       setLoadingState(false);
       setCurrentlyDisplaying("Runs");
-      // console.log(runData);
-      // console.log(allRuns);
     };
     getActivities();
     return () => {};
@@ -57,18 +46,6 @@ function App() {
     setActivitiesToDisplay(allRuns);
     setCurrentlyDisplaying("Runs");
   };
-
-  // const handleToggle = (e) => {
-  //   if (e.target.value === "on") {
-  //     e.target.value = "off";
-  //     populateWalks();
-  //   } else if (e.target.value === "off") {
-  //     e.target.value = "on";
-  //     populateRuns();
-  //   }
-
-  //   console.log(e.target.value);
-  // };
 
   return (
     <>
@@ -92,7 +69,6 @@ function App() {
             time={"month"}
             title={"Monthly Total (km)"}
             lineGraph={true}
-            // state={monthlyTotals}
             loadingState={loadingState}
             currentlyDisplaying={currentlyDisplaying}
           />
@@ -102,7 +78,6 @@ function App() {
             time={"day"}
             title={"Daily Total (km)"}
             lineGraph={false}
-            // state={dailyTotals}
             loadingState={loadingState}
           />
         </div>

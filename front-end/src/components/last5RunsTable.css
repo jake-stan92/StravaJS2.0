@@ -66,7 +66,3 @@ table {
 table tr:nth-child(odd) {
   background-color: rgb(244, 244, 244);
 }
-
-table tr:nth-child(even) {
-  /* background-color: var(--stravaLightPeach); */
-}
