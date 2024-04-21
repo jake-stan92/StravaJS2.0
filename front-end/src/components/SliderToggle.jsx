@@ -1,7 +1,9 @@
 import React from "react";
 import "./SliderToggle.css";
+import runningIcon from "../assets/images/running-man.svg";
+import walkingIcon from "../assets/images/person-walking.svg";
 
-const SliderToggle = ({ populateRuns, populateWalks }) => {
+const SliderToggle = ({ populateRuns, populateWalks, loadingState }) => {
   const handleToggle = (e) => {
     if (e.target.value === "on") {
       e.target.value = "off";
@@ -12,12 +14,22 @@ const SliderToggle = ({ populateRuns, populateWalks }) => {
     }
   };
   return (
-    <div className="slider-container">
-      <label className="switch">
-        <input type="checkbox" onChange={handleToggle} />
-        <span className="slider round"></span>
-      </label>
-    </div>
+    <>
+      {!loadingState ? (
+        <>
+          <div className="slider-container">
+            <img src={runningIcon} alt="running-icon" />
+            <label className="switch">
+              <input type="checkbox" onChange={handleToggle} />
+              <span className="slider round"></span>
+            </label>
+            <img src={walkingIcon} alt="walking-icon" />
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
 

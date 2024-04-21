@@ -59,17 +59,17 @@ function App() {
     setCurrentlyDisplaying("Runs");
   };
 
-  const handleToggle = (e) => {
-    if (e.target.value === "on") {
-      e.target.value = "off";
-      populateWalks();
-    } else if (e.target.value === "off") {
-      e.target.value = "on";
-      populateRuns();
-    }
+  // const handleToggle = (e) => {
+  //   if (e.target.value === "on") {
+  //     e.target.value = "off";
+  //     populateWalks();
+  //   } else if (e.target.value === "off") {
+  //     e.target.value = "on";
+  //     populateRuns();
+  //   }
 
-    console.log(e.target.value);
-  };
+  //   console.log(e.target.value);
+  // };
 
   return (
     <>
@@ -80,12 +80,10 @@ function App() {
           activities={activitiesToDisplay}
           currentlyDisplaying={currentlyDisplaying}
         />
-        <button onClick={populateWalks}>Set Walks</button>
-        <button onClick={populateRuns}>Set Runs</button>
-
         <SliderToggle
           populateRuns={populateRuns}
           populateWalks={populateWalks}
+          loadingState={loadingState}
         />
 
         <div className="graph-collection">
