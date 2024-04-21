@@ -19,8 +19,12 @@ const SliderToggle = ({ populateRuns, populateWalks, loadingState }) => {
         <>
           <div className="slider-container">
             <img src={runningIcon} alt="running-icon" />
-            <label className="switch">
-              <input type="checkbox" onChange={handleToggle} />
+            <label className="switch" htmlFor="toggle-input">
+              <input
+                type="checkbox"
+                onChange={handleToggle}
+                id="toggle-input"
+              />
               <span className="slider round"></span>
             </label>
             <img src={walkingIcon} alt="walking-icon" />
