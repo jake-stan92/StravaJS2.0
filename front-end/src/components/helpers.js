@@ -73,6 +73,7 @@ export function getMonthlyTotals(activities) {
 export function getDailyTotal(activities) {
   const currentDate = new Date(); // alter date here for weekly graph, default current week ( 2024, 1, 28 )
   const thisWeeksDates = weeklyDates(currentDate);
+  // console.log(thisWeeksDates); multiple renders here
   const dailyTotals = [
     {
       day: "Mon",
@@ -172,8 +173,7 @@ export function getActivityLikes(activities) {
 export function weeklyDates(currentDate) {
   // return dates of the week for a given day
   const week = [];
-  // Starting Monday not Sunday
-  currentDate.setDate(currentDate.getDate() - currentDate.getDay() - 6);
+
   for (let i = 0; i < 7; i++) {
     let date = new Date(currentDate);
     week.push(date.toDateString());
@@ -189,9 +189,8 @@ export function weeklyDates(currentDate) {
 export function getWeekNum(date) {
   const currentDate = new Date(date);
   const startDate = new Date(currentDate.getFullYear(), 0, 1);
-  const days = Math.floor((currentDate - startDate) / (24 * 60 * 60 * 1000));
+  const days = Math.ceil((currentDate - startDate) / (24 * 60 * 60 * 1000)); // math.ceil change here from .floor
   const weekNumber = Math.ceil(days / 7);
-
   return weekNumber;
 }
 
