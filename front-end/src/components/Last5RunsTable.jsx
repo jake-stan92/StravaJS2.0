@@ -5,7 +5,7 @@ import LoadingIcon from "./LoadingIcon";
 const Last5RunsTable = (props) => {
   let activityNum = 0;
   return (
-    <div className="last5-table">
+    <div className="last5-table bordered">
       {!props.loadingState ? (
         <table>
           <caption>

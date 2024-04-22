@@ -6,7 +6,7 @@ const TopStat = (props) => {
   return (
     <>
       {!props.loadingState ? (
-        <div className="top-stat" id={props.id}>
+        <div className="top-stat bordered" id={props.id}>
           <div className="stat-icon">
             <img src={props.img} alt="small-statistic-icon"></img>
           </div>
@@ -16,7 +16,7 @@ const TopStat = (props) => {
           </div>
         </div>
       ) : (
-        <div className="top-stat-loading">
+        <div className="top-stat-loading bordered">
           <LoadingIcon />
         </div>
       )}

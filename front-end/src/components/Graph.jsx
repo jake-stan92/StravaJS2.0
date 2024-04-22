@@ -108,7 +108,7 @@ const Graph = (props) => {
   }, [props.data]); // empty here working for now
 
   return (
-    <div className="graph-container">
+    <div className="graph-container bordered">
       {!props.loadingState ? (
         <canvas id={`graph${props.graphNum}`}></canvas>
       ) : (

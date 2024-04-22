@@ -43,3 +43,8 @@
   grid-column-start: 1;
   grid-column-end: 3;
 }
+
+.bordered {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 3px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+}

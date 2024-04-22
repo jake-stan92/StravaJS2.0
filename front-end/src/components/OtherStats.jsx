@@ -9,7 +9,7 @@ const OtherStats = (props) => {
   const highestHR = getHighestHR(props.activities);
   const activityLikes = getActivityLikes(props.activities);
   return (
-    <div className="other-stats">
+    <div className="other-stats bordered">
       {!props.loadingState ? (
         <>
           <p className="subtitle">Other Stats</p>
