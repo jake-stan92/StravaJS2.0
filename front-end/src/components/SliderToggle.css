@@ -73,3 +73,8 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.active {
+  filter: invert(30%) sepia(25%) saturate(7461%) hue-rotate(356deg)
+    brightness(97%) contrast(101%);
+}

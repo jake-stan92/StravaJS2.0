@@ -1,16 +1,23 @@
 import React from "react";
+import { useState } from "react";
 import "./SliderToggle.css";
 import runningIcon from "../assets/images/running-man.svg";
 import walkingIcon from "../assets/images/person-walking.svg";
 
 const SliderToggle = ({ populateRuns, populateWalks, loadingState }) => {
+  const [runActive, setRunActive] = useState(true);
+  const [walkActive, setWalkActive] = useState(false);
   const handleToggle = (e) => {
     if (e.target.value === "on") {
       e.target.value = "off";
       populateWalks();
+      setRunActive(false);
+      setWalkActive(true);
     } else if (e.target.value === "off") {
       e.target.value = "on";
       populateRuns();
+      setRunActive(true);
+      setWalkActive(false);
     }
   };
   return (
@@ -18,7 +25,11 @@ const SliderToggle = ({ populateRuns, populateWalks, loadingState }) => {
       {!loadingState ? (
         <>
           <div className="slider-container">
-            <img src={runningIcon} alt="running-icon" />
+            <img
+              className={runActive ? "active" : ""}
+              src={runningIcon}
+              alt="running-icon"
+            />
             <label className="switch" htmlFor="toggle-input">
               <input
                 type="checkbox"
@@ -27,7 +38,11 @@ const SliderToggle = ({ populateRuns, populateWalks, loadingState }) => {
               />
               <span className="slider round"></span>
             </label>
-            <img src={walkingIcon} alt="walking-icon" />
+            <img
+              className={walkActive ? "active" : ""}
+              src={walkingIcon}
+              alt="walking-icon"
+            />
           </div>
         </>
       ) : (
