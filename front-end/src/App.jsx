@@ -21,8 +21,8 @@ function App() {
   useEffect(() => {
     const getActivities = async () => {
       setLoadingState(true);
-      // const response = await fetch("https://stravajs2-0.onrender.com/"); // change to hosted name or setup in env
-      const response = await fetch("http://localhost:3000/");
+      const response = await fetch("https://stravajs2-0.onrender.com/"); // change to hosted name or setup in env
+      // const response = await fetch("http://localhost:3000/");
       const data = await response.json();
       const activities = data.payload;
       const allRuns = filterActivitiesByType("Run", activities);
