@@ -5,7 +5,7 @@ import Chart from "chart.js/auto";
 import {
   getDailyTotal,
   getMonthlyTotals,
-  getWeekNum,
+  // getWeekNum,
 } from "../components/helpers.js";
 import LoadingIcon from "./LoadingIcon.jsx";
 
@@ -13,7 +13,9 @@ const Graph = (props) => {
   const monthlyTotals = getMonthlyTotals(props.data);
   const dailyTotals = getDailyTotal(props.data);
   useEffect(() => {
-    let currentWeekNum = getWeekNum(new Date());
+    // let currentWeekNum = getWeekNum(new Date());
+    let currentWeekNum = 17;
+
     let chartLocation = document.getElementById(`graph${props.graphNum}`);
     if (props.lineGraph) {
       const myChart = new Chart(chartLocation, {
@@ -77,7 +79,7 @@ const Graph = (props) => {
           labels: dailyTotals.map((row) => row[props.time]),
           datasets: [
             {
-              label: `${props.title} - Week${currentWeekNum}`,
+              label: `${props.title} - This Week`,
               data: dailyTotals.map((row) => row.distance),
               order: 1,
               yAxisID: "y",

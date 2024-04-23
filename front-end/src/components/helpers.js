@@ -73,7 +73,7 @@ export function getMonthlyTotals(activities) {
 export function getDailyTotal(activities) {
   const currentDate = new Date(); // alter date here for weekly graph, default current week ( 2024, 1, 28 )
   const thisWeeksDates = weeklyDates(currentDate);
-  // console.log(thisWeeksDates); multiple renders here
+  // console.log(thisWeeksDates);
   const dailyTotals = [
     {
       day: "Mon",
@@ -164,44 +164,27 @@ export function getActivityLikes(activities) {
   return { mostLikes: mostLikedActvity, totalLikes: totalLikes };
 }
 
-// next stats
-// run.average_heartrate 157.2
-// run.kudos_count 1 === most liked and total likes
-// run.max_heartrate 179
-// .max_speed
-
-export function weeklyDates(currentDate) {
-  // return dates of the week for a given day
-  const week = [];
-
-  for (let i = 0; i < 7; i++) {
-    let date = new Date(currentDate);
-    week.push(date.toDateString());
-    currentDate.setDate(currentDate.getDate() + 1);
+function weeklyDates(currentDate) {
+  const dates = [];
+  const firstDayOfWeek = startOfWeek(currentDate);
+  dates.push(firstDayOfWeek.toDateString());
+  for (let i = 0; i < 6; i++) {
+    const nextDay = new Date(
+      firstDayOfWeek.setDate(firstDayOfWeek.getDate() + 1)
+    );
+    dates.push(nextDay.toDateString());
   }
-  return week;
+  // console.log(dates);
+  return dates;
 }
-
-// const thisWeek = weeklyDates(new Date());
-// const testDate = new Date("2024-04-06T17:25:36Z").toDateString("en-uk");
 
 // returns the week number for a given date
-export function getWeekNum(date) {
-  const currentDate = new Date(date);
-  const startDate = new Date(currentDate.getFullYear(), 0, 1);
-  const days = Math.ceil((currentDate - startDate) / (24 * 60 * 60 * 1000)); // math.ceil change here from .floor
-  const weekNumber = Math.ceil(days / 7);
-  return weekNumber;
-}
+export function startOfWeek(date) {
+  // Calculate the difference between the date's day of the month and its day of the week
+  var diff = date.getDate() - date.getDay() + (date.getDay() === 0 ? -6 : 1);
 
-// console.log(calculateWeekNum(new Date()));
-
-// console.log(weeklyDates(new Date(2022, 6, 21)));
-
-function getDateOfWeek(w, y) {
-  let date = new Date(y, 0, 1 + (w - 1) * 7);
-  date.setDate(date.getDate() + (1 - date.getDay())); // 0 - Sunday, 1 - Monday etc
-  return date;
+  // Set the date to the start of the week by setting it to the calculated difference
+  return new Date(date.setDate(diff));
 }
 
 function populateSelect(weekNum) {

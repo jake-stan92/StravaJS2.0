@@ -6,13 +6,12 @@
 }
 
 :root {
-  --stravaRed: rgb(252, 50, 0);
+  --stravaRed: rgb(247, 87, 8);
   --stravaHover: rgb(204, 66, 0);
   --stravaOffWhite: rgb(249, 248, 245);
   --stravaPeach: rgb(254, 212, 191);
   --stravaLightPeach: rgb(255, 225, 191);
 }
-
 #root {
   min-height: 100dvh;
   display: flex;
