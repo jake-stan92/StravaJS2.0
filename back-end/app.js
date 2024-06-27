@@ -15,7 +15,7 @@ const app = express();
 const PORT = process.env.PORT;
 
 app.use(express.json());
-app.use(cors({ origin: "*" }));
+// app.use(cors({ origin: "*" }));
 // app.use(function (req, res, next) {
 //   res.setHeader("Access-Control-Allow-Origin", "*");
 //   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
@@ -23,6 +23,16 @@ app.use(cors({ origin: "*" }));
 //   res.setHeader("Access-Control-Allow-Credentials", true);
 //   next();
 // });
+
+const corsOpts = {
+  origin: "*",
+
+  methods: ["GET", "POST"],
+
+  allowedHeaders: ["Content-Type"],
+};
+
+app.use(cors(corsOpts));
 
 // global date data here
 const todaysDate = new Date();
