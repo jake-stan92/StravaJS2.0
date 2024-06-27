@@ -17,21 +17,6 @@ async function resetDatabase() {
         );
     `);
 
-    //Second table demo
-
-    //model, manufacturer_id, engine_displacement, BHP, drivetrain
-    // Create the vehicles table with a foreign key to the manufacturers table
-    // await pool.query(`
-    //     CREATE TABLE models (
-    //         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    //         model VARCHAR(255) NOT NULL,
-    //         engine_displacement VARCHAR(10),
-    //         BHP INT,
-    //         drivetrain VARCHAR (5),
-    //         manufacturer_id INT REFERENCES manufacturers(id)
-    //     );
-    // `);
-
     // Popualte athletes table - single value to start
     await pool.query(`
       INSERT INTO athletes (name, client_id, client_secret, refresh_token)
