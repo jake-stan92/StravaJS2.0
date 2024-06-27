@@ -1,5 +1,8 @@
 # StravaJS 🏃‍♂️
 
+🔗 https://stravajs.netlify.app/ \
+\*\* the database is currently hosted on a free tier plan. It can take a while to load (up to 1 min 😢) - please be patient 😊
+
 ## Description
 
 As a keen activity tracker and a lover of data, I created stravaJS to collate and display activity data in a clear and concise way. Strava doesn’t offer such detailed activity results – at least in the free tier anyway. The idea was initially born when a small group of friends decided to complete a 10k per week running challenge in 2023. The app has gone through 3 iterations to be where it is currently. Using the Strava API, the app collects the activities of given athletes and then filters results accordingly.
@@ -7,7 +10,7 @@ As a keen activity tracker and a lover of data, I created stravaJS to collate an
 ## Tech Stack
 
 For this project I decided to use PostgreSQL as a database to store sensitive athlete data. This is easily hosted and maintained on render.
-For the back-end I decided to use NodeJS and React (Vite) on the front-end. This choice was made mainly due to ease of continuous deployment as well as wanting to practice developing in both frameworks
+For the back-end I decided to use NodeJS and React (Vite) on the front-end. This choice was made mainly due to ease of continuous deployment as well as wanting to practice developing in both frameworks. The charts themselves were created using ChartJS.
 
 ## The Journey
 
