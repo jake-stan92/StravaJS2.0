@@ -47,3 +47,21 @@
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 3px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
 }
+
+/* Home Page */
+.home-content {
+  background-color: var(--stravaPeach);
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 10px;
+}
+
+#connect-strava-button {
+  width: 100%;
+  height: 4rem;
+}
+
+#strava-logo {
+  width: 50%;
+  height: 2rem;
+}

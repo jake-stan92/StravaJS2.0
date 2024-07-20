@@ -47,7 +47,7 @@ table {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0rem 1rem;
+  padding: 0rem 1rem 1rem 1rem;
   margin-bottom: 0.5rem;
   flex: 2;
 }

@@ -12,7 +12,7 @@ function App() {
       <p>Connect to app using the strava button below</p>
       {/* Auth via my app */}
       <a
-        href={`https://www.strava.com/oauth/authorize?client_id=113640&response_type=code&redirect_uri=http://localhost:5174/exchange_token&approval_prompt=force&scope=activity:read_all`}
+        href={`https://www.strava.com/oauth/authorize?client_id=113640&response_type=code&redirect_uri=http://localhost:5173/exchange_token&approval_prompt=force&scope=activity:read_all`}
       >
         <img id="connect-strava-button" src={stravaButtonLarge}></img>
         {/* Strava logos can appear near, but must be completely separate and apart from (and should not appear more prominently than) the name/logo of your application. */}

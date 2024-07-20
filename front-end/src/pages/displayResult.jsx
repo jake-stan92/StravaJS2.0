@@ -66,6 +66,7 @@ function DisplayResults() {
     const athlete = await getAthlete(stravaData.accessToken);
     if (athlete) {
       setAthlete(athlete);
+      console.log(athlete);
     } else {
       navigate("/error", {
         replace: true,
@@ -82,7 +83,8 @@ function DisplayResults() {
       navigate("/error", {
         replace: true,
         state: {
-          message: "Failed to get athlete activities, please tick both boxes",
+          message:
+            "Failed to get athlete activities, please tick both boxes on authorisation screen.",
         },
       });
     }
@@ -110,7 +112,7 @@ function DisplayResults() {
 
   return (
     <>
-      <Header />
+      <Header athlete={athlete} />
       <div className="main">
         <TopStatContainer
           loadingState={loadingState}
