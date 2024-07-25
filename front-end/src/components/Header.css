@@ -8,3 +8,8 @@
 h1 {
   color: var(--stravaRed);
 }
+
+#athlete-name {
+  font-weight: 600;
+  color: var(--stravaHover);
+}

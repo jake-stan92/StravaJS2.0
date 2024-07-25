@@ -75,6 +75,8 @@ input:checked + .slider:before {
 }
 
 .active {
-  filter: invert(30%) sepia(25%) saturate(7461%) hue-rotate(356deg)
-    brightness(97%) contrast(101%);
+  /* filter: invert(30%) sepia(25%) saturate(7461%) hue-rotate(356deg)
+    brightness(97%) contrast(101%); */
+  filter: invert(36%) sepia(23%) saturate(782%) hue-rotate(80deg)
+    brightness(89%) contrast(90%);
 }

@@ -28,7 +28,7 @@ const Graph = (props) => {
               data: monthlyTotals.map((row) => row.distance),
               order: 1,
               yAxisID: "y",
-              backgroundColor: "#fc5200",
+              backgroundColor: "#386641",
             },
             {
               label: `Total ${props.currentlyDisplaying}`,
@@ -37,7 +37,7 @@ const Graph = (props) => {
               order: 0,
               yAxisID: "y1",
               borderWidth: 2, // change line width here
-              backgroundColor: "black",
+              backgroundColor: "#bc4749",
             },
           ],
         },
@@ -83,7 +83,7 @@ const Graph = (props) => {
               data: dailyTotals.map((row) => row.distance),
               order: 1,
               yAxisID: "y",
-              backgroundColor: "#fc5200",
+              backgroundColor: "#386641",
             },
           ],
         },
