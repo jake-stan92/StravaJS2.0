@@ -35,7 +35,7 @@ table {
 .subtitle {
   padding: 1rem 0rem;
   height: 60px;
-  color: var(--stravaRed);
+  color: var(--accentRed);
   font-size: 1.2rem;
   font-weight: 700;
 }

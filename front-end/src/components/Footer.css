@@ -1,7 +1,7 @@
 .footer {
   text-align: center;
   background-color: white;
-  color: var(--stravaRed);
+  color: var(--accentRed);
   padding: 1rem;
   border-top: 1px solid rgba(0, 0, 0, 0.219);
 }

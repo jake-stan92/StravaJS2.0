@@ -15,7 +15,7 @@
 
 .top-stat-content {
   text-align: end;
-  color: var(--stravaRed);
+  color: var(--dark1);
 }
 
 .stat-title {
@@ -25,7 +25,8 @@
 .stat-figure {
   font-weight: 700;
   font-size: 1.1rem;
-  color: var(--stravaHover);
+  /* color: var(--dark2); */
+  color: var(--accentRed);
 }
 
 @media (width > 999px) {

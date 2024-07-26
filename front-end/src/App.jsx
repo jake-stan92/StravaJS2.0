@@ -2,18 +2,17 @@ import "./App.css";
 import stravaButton from "../src/assets/images/strava-button.png";
 import stravaButtonLarge from "../src/assets/images/strava-button-large.png";
 import stravaLogo from "../src/assets/images/powered-by-strava-logo.png";
+// import backgroundIMG from "../src/assets/images/layered-peaks-haikei.png";
 
 // Home page for my app - will re-direct to strava login upon login click
 function App() {
   return (
     <div className="home-container">
-      <img
-        id="home-img"
-        src="./src/assets/images/running-man.svg"
-        alt="Running man logo"
-      />
-      <div className="home-content">
+      <div className="topBg">
+        {" "}
         <h1>The Run Club</h1>
+      </div>
+      <div className="home-content">
         {/* // alter URL here when hosted */}
         <h4>What?</h4>
         <p>The Run Club helps you visualise your Strava activity data.</p>
@@ -34,8 +33,8 @@ function App() {
         >
           <img id="connect-strava-button" src={stravaButtonLarge}></img>
           {/* Strava logos can appear near, but must be completely separate and apart from (and should not appear more prominently than) the name/logo of your application. */}
-          <img id="strava-logo" src={stravaLogo}></img>
         </a>
+        <img id="strava-logo" src={stravaLogo}></img>
       </div>
     </div>
   );
