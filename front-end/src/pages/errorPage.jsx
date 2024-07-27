@@ -8,7 +8,8 @@ const ErrorPage = () => {
     <div className="error-content">
       <h2>Error!</h2>
       <p id="error-message">{location.state.message}</p>
-      <a href="http://localhost:5173/">Go Home</a>
+      {/* <a href="http://localhost:5173/">Go Home</a> */}
+      <a href="https://the-run-club.netlify.app/">Go Home</a>
     </div>
   );
 };
