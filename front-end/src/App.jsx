@@ -2,7 +2,6 @@ import "./App.css";
 import stravaButton from "../src/assets/images/strava-button.png";
 import stravaButtonLarge from "../src/assets/images/strava-button-large.png";
 import stravaLogo from "../src/assets/images/powered-by-strava-logo.png";
-// import backgroundIMG from "../src/assets/images/layered-peaks-haikei.png";
 
 // Home page for my app - will re-direct to strava login upon login click
 function App() {

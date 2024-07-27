@@ -5,3 +5,9 @@
   place-items: center;
   background-color: var(--lite1);
 }
+
+@media (width > 500px) {
+  .error-content {
+    max-height: 150px;
+  }
+}
