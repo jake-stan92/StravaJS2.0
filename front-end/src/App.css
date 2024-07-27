@@ -84,7 +84,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  /* position: relative; */
+  position: relative;
   display: grid;
   place-content: center;
 }
@@ -93,12 +93,12 @@
   font-weight: 700;
   font-size: 3rem;
   color: white;
-  margin-bottom: 5rem;
-  /* position: absolute;
+  position: absolute;
   margin: auto;
+  top: 20%;
   left: 0;
   right: 0;
-  text-align: center; */
+  text-align: center;
 }
 
 .home-content h4 {
@@ -132,10 +132,14 @@
   }
 
   .home-container {
-    height: 50dvh;
+    height: fit-content;
     background-color: var(--lite2);
     padding: 1rem;
     margin: auto;
+  }
+
+  .topBg {
+    min-height: 200px;
   }
 
   .topBg h1 {

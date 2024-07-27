@@ -22,8 +22,8 @@ function App() {
         </p>
         <h4>How?</h4>
         <p>
-          The Run Club connects directly to Strava and formats the data for you.
-          No data is stored at any point :)
+          The Run Club connects directly to Strava and formats your data for
+          you. No data is stored at any point :)
         </p>
         <p>Connect to the app using the strava button below</p>
         {/* Auth via my app */}
