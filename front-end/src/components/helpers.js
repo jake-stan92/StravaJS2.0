@@ -187,22 +187,22 @@ export function startOfWeek(date) {
   return new Date(date.setDate(diff));
 }
 
-function populateSelect(weekNum) {
-  const options = [];
-  const currentYear = new Date().getFullYear();
-  for (let i = 0; i < weekNum; i++) {
-    const weekStart = new Date(
-      weeklyDates(getDateOfWeek(i + 1, currentYear))[0]
-    );
-    const weekEnd = new Date(weeklyDates(getDateOfWeek(i + 1, currentYear))[6]);
-    options.push(
-      `Week ${
-        i + 1
-      } = ${weekStart.toLocaleDateString()} - ${weekEnd.toLocaleDateString()}`
-    );
-  }
-  return options;
-}
+// function populateSelect(weekNum) {
+//   const options = [];
+//   const currentYear = new Date().getFullYear();
+//   for (let i = 0; i < weekNum; i++) {
+//     const weekStart = new Date(
+//       weeklyDates(getDateOfWeek(i + 1, currentYear))[0]
+//     );
+//     const weekEnd = new Date(weeklyDates(getDateOfWeek(i + 1, currentYear))[6]);
+//     options.push(
+//       `Week ${
+//         i + 1
+//       } = ${weekStart.toLocaleDateString()} - ${weekEnd.toLocaleDateString()}`
+//     );
+//   }
+//   return options;
+// }
 
 export const getAthlete = async (token) => {
   const response = await fetch(`https://www.strava.com/api/v3/athlete`, {
@@ -217,17 +217,23 @@ export const getAthlete = async (token) => {
       firstName: data.firstname,
       lastName: data.lastname,
     };
-    console.log("athlete data obtained:");
-    console.log(data);
+    // console.log("athlete data obtained:");
+    // console.log(data);
     return athlete;
   } else {
     return null;
   }
 };
 
+// need to filter by year here - currently returning all activities ever!
 export const getAthleteActivities = async (token) => {
+  //get current year
+  const date = new Date();
+  const currentYear = date.getFullYear();
+  let filteredDataByYear = [];
+
   const response = await fetch(
-    `https://www.strava.com/api/v3/athlete/activities`,
+    `https://www.strava.com/api/v3/athlete/activities?per_page=200`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -238,9 +244,16 @@ export const getAthleteActivities = async (token) => {
   if (response.ok) {
     // console.log(response);
     const data = await response.json();
-    console.log("activity data obtained:");
-    console.log(data);
-    return data;
+    data.map((activity) => {
+      const activityDate = new Date(activity.start_date);
+      const activityYear = activityDate.getFullYear();
+      if (activityYear === currentYear) {
+        filteredDataByYear.push(activity);
+      }
+    });
+    // console.log("activity data obtained:");
+    // console.log(data);
+    return filteredDataByYear;
   } else {
     return null;
   }

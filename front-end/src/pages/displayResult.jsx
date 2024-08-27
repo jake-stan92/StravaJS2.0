@@ -66,7 +66,7 @@ function DisplayResults() {
     const athlete = await getAthlete(stravaData.accessToken);
     if (athlete) {
       setAthlete(athlete);
-      console.log(athlete);
+      // console.log(athlete);
     } else {
       navigate("/error", {
         replace: true,
