@@ -1,6 +1,9 @@
 # StravaJS 🏃‍♂️
 
-🔗 https://stravajs.netlify.app/ \
+\*\* This app is now deprecated - [The Run Club](https://github.com/jake-stan92/The-Run-Club) is the latest version \*\*
+
+========================
+
 \*\* the database is currently hosted on a free tier plan. It can take a while to load (up to 1 min 😢) - please be patient 😊
 
 ## Description
