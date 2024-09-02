@@ -6,24 +6,35 @@
 }
 
 :root {
-  --stravaRed: rgb(247, 87, 8);
+  /* --stravaRed: rgb(247, 87, 8);
   --stravaHover: rgb(204, 66, 0);
   --stravaOffWhite: rgb(249, 248, 245);
   --stravaPeach: rgb(254, 212, 191);
-  --stravaLightPeach: rgb(255, 225, 191);
+  --stravaLightPeach: rgb(255, 225, 191); */
+  /* --stravaRed: #bc4749;
+  --stravaHover: #386641;
+  --stravaOffWhite: rgb(249, 248, 245);
+  --stravaPeach: #a7c957;
+  --stravaLightPeach: #6a994e; */
+  --dark1: #081c15;
+  --dark2: #1b4332;
+  --med1: #2d6a4f;
+  --mid2: #40916c;
+  --lite1: #52b788;
+  --lite2: #d8f3dc;
+  --accentRed: #bc4749;
 }
 #root {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  background-color: var(--stravaOffWhite);
+  background-color: var(--lite2);
 }
 
 .main {
   display: flex;
   flex-direction: column;
   flex: 1;
-  background-color: var(--stravaOffWhite);
 }
 
 .bottom-stat-collection {
@@ -46,4 +57,95 @@
 .bordered {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 3px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
+}
+
+/* Home Page - Mobile first */
+.home-container {
+  /* background-color: var(--stravaPeach); */
+  height: 100dvh;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-content {
+  flex: 2;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.topBg {
+  background-image: url("../src//assets/images/layered-peaks-haikei.png");
+  flex: 1;
+  width: 100%;
+  max-width: 500px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  display: grid;
+  place-content: center;
+}
+
+.topBg h1 {
+  font-weight: 700;
+  font-size: 3rem;
+  color: white;
+  position: absolute;
+  margin: auto;
+  top: 20%;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.home-content h4 {
+  color: var(--dark1);
+}
+
+.home-content p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.home-content a {
+  text-align: center;
+}
+
+#connect-strava-button {
+  width: 100%;
+  max-width: 300px;
+  height: 3.5rem;
+}
+
+#strava-logo {
+  width: 50%;
+  height: 2rem;
+}
+
+/* Screen size over 500 */
+@media (width > 500px) {
+  #root {
+    background-color: rgb(245, 240, 234);
+  }
+
+  .home-container {
+    height: fit-content;
+    background-color: var(--lite2);
+    padding: 1rem;
+    margin: auto;
+  }
+
+  .topBg {
+    min-height: 200px;
+  }
+
+  .topBg h1 {
+    font-weight: 700;
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 2rem;
+  }
 }

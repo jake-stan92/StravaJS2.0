@@ -52,11 +52,11 @@
 }
 
 input:checked + .slider {
-  background-color: var(--stravaRed);
+  background-color: var(--accentRed);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px var(--stravaHover);
+  box-shadow: 0 0 1px var(--accentRed);
 }
 
 input:checked + .slider:before {
@@ -75,6 +75,8 @@ input:checked + .slider:before {
 }
 
 .active {
-  filter: invert(30%) sepia(25%) saturate(7461%) hue-rotate(356deg)
-    brightness(97%) contrast(101%);
+  /* filter: invert(30%) sepia(25%) saturate(7461%) hue-rotate(356deg)
+    brightness(97%) contrast(101%); */
+  filter: invert(31%) sepia(68%) saturate(1156%) hue-rotate(321deg)
+    brightness(94%) contrast(82%);
 }

@@ -49,7 +49,7 @@
   .circle {
     height: 8px;
     width: 8px;
-    background-color: var(--stravaRed);
+    background-color: var(--accentRed);
     border-radius: 50%;
     position: absolute;
     left: -5px;

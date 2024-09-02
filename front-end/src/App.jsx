@@ -1,100 +1,42 @@
-import React, { useEffect, useState } from "react";
-import Header from "./components/Header";
 import "./App.css";
-import Footer from "./components/Footer";
-import Graph from "./components/Graph";
+import stravaButton from "../src/assets/images/strava-button.png";
+import stravaButtonLarge from "../src/assets/images/strava-button-large.png";
+import stravaLogo from "../src/assets/images/powered-by-strava-logo.png";
 
-import { filterActivitiesByType } from "./components/helpers.js";
-import Last5RunsTable from "./components/Last5RunsTable.jsx";
-import TopStatContainer from "./components/TopStatContainer.jsx";
-import OtherStats from "./components/OtherStats.jsx";
-import SliderToggle from "./components/SliderToggle.jsx";
-
+// Home page for my app - will re-direct to strava login upon login click
 function App() {
-  const [allActivities, setAllActivities] = useState([]);
-  const [activitiesToDisplay, setActivitiesToDisplay] = useState([]);
-  const [currentlyDisplaying, setCurrentlyDisplaying] = useState("");
-  const [loadingState, setLoadingState] = useState(false);
-  // state is not a variable!! try to refactor with just runs as state and pass to other comps
-
-  // populate interface with run data as default
-  useEffect(() => {
-    const getActivities = async () => {
-      setLoadingState(true);
-      const response = await fetch("https://stravajs2-0.onrender.com/"); // change to hosted name or setup in env
-      // const response = await fetch("http://localhost:3000/");
-      const data = await response.json();
-      const activities = data.payload;
-      const allRuns = filterActivitiesByType("Run", activities);
-      setAllActivities(activities);
-      setActivitiesToDisplay(allRuns);
-      setLoadingState(false);
-      setCurrentlyDisplaying("Runs");
-    };
-    getActivities();
-    return () => {};
-  }, []);
-
-  const populateWalks = () => {
-    const allWalks = filterActivitiesByType("Walk", allActivities);
-    setActivitiesToDisplay(allWalks);
-    setCurrentlyDisplaying("Walks");
-  };
-
-  const populateRuns = () => {
-    const allRuns = filterActivitiesByType("Run", allActivities);
-    setActivitiesToDisplay(allRuns);
-    setCurrentlyDisplaying("Runs");
-  };
-
   return (
-    <>
-      <Header />
-      <div className="main">
-        <TopStatContainer
-          loadingState={loadingState}
-          activities={activitiesToDisplay}
-          currentlyDisplaying={currentlyDisplaying}
-        />
-        <SliderToggle
-          populateRuns={populateRuns}
-          populateWalks={populateWalks}
-          loadingState={loadingState}
-        />
-
-        <div className="graph-collection">
-          <Graph
-            data={activitiesToDisplay}
-            graphNum={1}
-            time={"month"}
-            title={"Monthly Total (km)"}
-            lineGraph={true}
-            loadingState={loadingState}
-            currentlyDisplaying={currentlyDisplaying}
-          />
-          <Graph
-            data={activitiesToDisplay}
-            graphNum={2}
-            time={"day"}
-            title={"Daily Total (km)"}
-            lineGraph={false}
-            loadingState={loadingState}
-          />
-        </div>
-        <div className="bottom-stat-collection">
-          <Last5RunsTable
-            loadingState={loadingState}
-            activities={activitiesToDisplay}
-            currentlyDisplaying={currentlyDisplaying}
-          />
-          <OtherStats
-            loadingState={loadingState}
-            activities={activitiesToDisplay}
-          />
-        </div>
+    <div className="home-container">
+      <div className="topBg">
+        {" "}
+        <h1>The Run Club</h1>
       </div>
-      <Footer />
-    </>
+      <div className="home-content">
+        {/* // alter URL here when hosted */}
+        <h4>What?</h4>
+        <p>The Run Club helps you visualise your Strava activity data.</p>
+        <h4>Why?</h4>
+        <p>
+          Born from a friendly 10km / week challenge, the app helps you track
+          and monitor your weekly/monthly progress
+        </p>
+        <h4>How?</h4>
+        <p>
+          The Run Club connects directly to Strava and formats your data for
+          you. No data is stored at any point :)
+        </p>
+        <p>Connect to the app using the strava button below</p>
+        {/* Auth via my app */}
+        <a
+          // href={`https://www.strava.com/oauth/authorize?client_id=113640&response_type=code&redirect_uri=http://localhost:5173/exchange_token&approval_prompt=force&scope=activity:read_all`}
+          href={`https://www.strava.com/oauth/authorize?client_id=113640&response_type=code&redirect_uri=https://the-run-club.netlify.app/exchange_token&approval_prompt=force&scope=activity:read_all`}
+        >
+          <img id="connect-strava-button" src={stravaButtonLarge}></img>
+          {/* Strava logos can appear near, but must be completely separate and apart from (and should not appear more prominently than) the name/logo of your application. */}
+        </a>
+        <img id="strava-logo" src={stravaLogo}></img>
+      </div>
+    </div>
   );
 }
 
